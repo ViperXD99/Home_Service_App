@@ -1,6 +1,7 @@
 package lk.nibm.hireupapp.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
+import lk.nibm.hireupapp.activities.ServiceCategories
+import lk.nibm.hireupapp.activities.SignIn
 import lk.nibm.hireupapp.adapter.CategoryAdapter
 import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.databinding.FragmentHomeBinding
@@ -33,6 +36,7 @@ class HomeFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var imgProfile : ImageView
     private lateinit var loggedUserName : TextView
+    private lateinit var seeAllCategories : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,12 +46,21 @@ class HomeFragment : Fragment() {
         initializeComponents()
         categoryRecyclerView()
         loadProfileDetails()
+        clickListeners()
         return view
+    }
+
+    private fun clickListeners() {
+        seeAllCategories.setOnClickListener {
+            val intent = Intent(requireContext(), ServiceCategories::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initializeComponents() {
         imgProfile = view.findViewById(R.id.imgProfile)
         loggedUserName = view.findViewById(R.id.logged_user_name)
+        seeAllCategories = view.findViewById(R.id.seeAllCategories)
     }
 
     private fun loadProfileDetails() {
