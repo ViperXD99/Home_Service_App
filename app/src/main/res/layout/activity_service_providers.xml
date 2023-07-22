@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background_color"
-    tools:context=".activities.ServiceProviders">
+    tools:context=".activities.ServiceProviders"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -27,19 +29,19 @@
                 android:layout_marginStart="10dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:layout_width="54dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:padding="0dp"
                     app:icon="@drawable/ic_fluent_arrow_left_24_filled"
                     app:iconSize="30dp"
                     app:iconTint="@color/primary_color"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                 <TextView
                     android:id="@+id/txtCategoryType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     />
             </LinearLayout>
@@ -69,10 +71,14 @@
 
         </LinearLayout>
 
-
-
-
-
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:foregroundGravity="center_horizontal"
+        android:id="@+id/ServiceProvidersRecyclerView"
+        />
 
 </LinearLayout>
