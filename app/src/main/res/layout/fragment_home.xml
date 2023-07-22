@@ -34,7 +34,6 @@
                     android:src="@color/primary_color"
                     android:scaleType="fitXY"/>
             </com.google.android.material.card.MaterialCardView>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
