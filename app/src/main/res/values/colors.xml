@@ -7,4 +7,13 @@
     <color name="accent_color">#1BA39C</color>
     <color name="light_grey">#6C7A89</color>
     <color name="light_blue">#1A88EE</color>
+
+  <!--SHAZ-->
+    <color name="dark_gray">#444460</color>
+    <color name="light_gray">#6C7A89</color>
+    <color name="background">#E8ECF1</color>
+    <color name="teal">#1BA39C</color>
+    <color name="light_green">#1BA39C</color>
+    <color name="light_purple">#AD5389</color>
+    <color name="red">#FFFF0000</color>
 </resources>
