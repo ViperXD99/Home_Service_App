@@ -15,6 +15,9 @@
         android:theme="@style/Theme.HireUpApp"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ServiceProviders"
+            android:exported="false" />
+        <activity
             android:name=".activities.ServiceCategories"
             android:exported="false" />
         <activity

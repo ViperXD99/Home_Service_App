@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -12,7 +11,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
-import lk.nibm.hireupapp.adapter.CategoryAdapter
 import lk.nibm.hireupapp.adapter.CategoryRecyclerViewAdapter
 import lk.nibm.hireupapp.model.Category
 
