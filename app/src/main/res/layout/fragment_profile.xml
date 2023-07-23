@@ -1,330 +1,322 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProfileFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profile"
-            android:layout_marginStart="10dp"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:text="@string/profile"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                app:cardCornerRadius="100dp">
-
-                <ImageView
-                    android:id="@+id/logged_user_profile_pic"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:contentDescription="@string/profile_picture"
-                    android:scaleType="fitXY"
-                    android:src="@color/primary_color" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logged_user_profile_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/profile_picture"
+            android:scaleType="fitXY"
+            android:src="@color/primary_color"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
         <TextView
             android:id="@+id/logged_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shazna"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:textStyle="bold"
+            android:text="Shazna"
             android:textSize="14sp"
+            android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/logged_user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="shazna464@gmail.com"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
+            android:text="shazna464@gmail.com"
             android:textSize="14sp"
             tools:ignore="HardcodedText" />
 
     </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="30dp"
-            android:background="?android:attr/listDivider" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="30dp"
+        android:background="?android:attr/listDivider" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        tools:ignore="UselessLeaf">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            tools:ignore="UselessLeaf">
+            android:src="@drawable/ic_fluent_person_24_filled"
+            tools:ignore="ContentDescription" />
 
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/personal_info_txt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fluent_person_24_filled"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/personal_info_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/personal_information"
-                android:layout_marginStart="20dp"
-                android:textSize="14sp" />
+            android:layout_marginStart="20dp"
+            android:text="@string/personal_information"
+            android:textSize="14sp" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+            android:layout_marginTop="2dp"
+            android:src="@drawable/ic_fluent_location_24_filled_teal"
+            tools:ignore="ContentDescription" />
 
-            <ImageView
-
-                android:layout_width="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fluent_location_24_filled_teal"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/update_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/address"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/update_address"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-            <ImageView
-
-                android:layout_width="wrap_content"
-                android:layout_marginTop="3dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fluent_stack_star_24_filled"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_reviews"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp" />
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/address"
+            android:textSize="14sp" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+            android:layout_marginTop="3dp"
+            android:src="@drawable/ic_fluent_stack_star_24_filled"
+            tools:ignore="ContentDescription" />
 
-            <ImageView
-
-                android:layout_width="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fluent_person_money_24_filled"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Transactions"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-
-                android:layout_width="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fluent_shield_checkmark_24_filled"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/privacy_policies"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
+            android:text="@string/my_reviews"
+            android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_gravity="center"
-            android:orientation="horizontal">
-            <ImageView
+            android:layout_marginTop="2dp"
+            android:src="@drawable/ic_fluent_person_money_24_filled"
+            tools:ignore="ContentDescription" />
 
-                android:layout_width="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fluent_question_circle_24_filled"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/help_support"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-            <ImageView
-
-                android:layout_width="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fluent_sign_out_24_filled"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/logout_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/log_out"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:background="?android:attr/listDivider" />
+            android:text="My Transactions"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/ic_fluent_shield_checkmark_24_filled"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/privacy_policies"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/ic_fluent_question_circle_24_filled" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/help_support"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/ic_fluent_sign_out_24_filled"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/logout_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/log_out"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
 
 
 </LinearLayout>
