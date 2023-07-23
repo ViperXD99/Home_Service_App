@@ -19,7 +19,6 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="45dp"
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -162,8 +161,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:gravity="center"
-            android:text="19/B, Kollupitiya, Colombo 03"
             android:text="19B Kadawatha Rd,"
             android:textSize="14sp"
             android:gravity="center"
