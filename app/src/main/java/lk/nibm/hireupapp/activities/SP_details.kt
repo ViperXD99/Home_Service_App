@@ -1,9 +1,11 @@
 package lk.nibm.hireupapp.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -27,6 +29,8 @@ class SP_details : AppCompatActivity() {
     private lateinit var spStartingTime : TextView
     private lateinit var spEndingTime : TextView
     private lateinit var spBook : Button
+    private lateinit var spCall : ImageButton
+    private lateinit var btnBack : ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sp_details)
@@ -58,6 +62,16 @@ class SP_details : AppCompatActivity() {
             val intent = Intent(this, BookNow::class.java)
             startActivity(intent)
         }
+        spCall.setOnClickListener {
+            val providerData = ServiceProviderDataManager.getProvider()
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:"+providerData?.contact)
+            startActivity(intent)
+        }
+        btnBack.setOnClickListener {
+            val intent = Intent(this, SP_details::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initializeComponents() {
@@ -74,6 +88,8 @@ class SP_details : AppCompatActivity() {
         spEndingTime = findViewById(R.id.sp_endingTime)
         spBook = findViewById(R.id.sp_book)
         spProPic = findViewById(R.id.sp_profile_pic)
+        spCall = findViewById(R.id.call_sp)
+        btnBack = findViewById(R.id.btnBack)
 
     }
 }
