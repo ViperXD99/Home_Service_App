@@ -34,7 +34,6 @@ class ServiceProviders : AppCompatActivity() {
         loadCategory()
         loadSPRecyclerView()
     }
-
     private fun loadSPRecyclerView() {
         serviceProviders = findViewById(R.id.ServiceProvidersRecyclerView)
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
