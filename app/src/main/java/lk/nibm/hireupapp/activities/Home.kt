@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.databinding.ActivityHomeBinding
 import lk.nibm.hireupapp.fragments.HomeFragment
+import lk.nibm.hireupapp.fragments.ProfileFragment
 
 
 class Home : AppCompatActivity() {
@@ -21,6 +22,7 @@ class Home : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home_btn -> replaceFragment(HomeFragment())
+                R.id.profile_btn -> replaceFragment(ProfileFragment())
             }
             true
         }

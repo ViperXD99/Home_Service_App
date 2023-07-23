@@ -32,4 +32,11 @@
     <string name="working_hours">Working hours</string>
     <string name="bookings_available_from">Bookings Available From</string>
     <string name="about">About</string>
+    <string name="profile">Profile</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="address">Address</string>
+    <string name="my_reviews">My Reviews</string>
+    <string name="privacy_policies">Privacy Policies</string>
+    <string name="help_support"><![CDATA[Help & Support]]></string>
+    <string name="log_out">Log Out</string>
 </resources>
