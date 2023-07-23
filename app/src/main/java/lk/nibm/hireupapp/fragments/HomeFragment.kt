@@ -22,6 +22,7 @@ import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.ServiceCategories
 import lk.nibm.hireupapp.activities.SignIn
 import lk.nibm.hireupapp.adapter.CategoryAdapter
+import lk.nibm.hireupapp.common.CategoryDataManager
 import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.databinding.FragmentHomeBinding
 import lk.nibm.hireupapp.model.Category
