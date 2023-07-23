@@ -16,4 +16,8 @@ data class ServiceProviders(
     val price: String? = null,
     val providerId : String? = null,
     val serviceId: String? = null,
+    val startingDate: String? = null,
+    val endDate: String? = null,
+    val startingTime: String? = null,
+    val endTime: String? = null
 )
