@@ -131,12 +131,30 @@
 
             <TextView
                 android:id="@+id/sp_address"
-                android:layout_width="220dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
-                android:text="@string/_19_b_kollupitiya_colombo_03"
+                android:text="19B Kadawatha Rd,"
                 android:textSize="14sp"
-                tools:ignore="TextSizeCheck" />
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/sp_city"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:text="Dehiwala,"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/sp_district"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:text="Colombo"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
 
         </LinearLayout>
 
@@ -169,7 +187,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="379dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="130dp"
@@ -184,23 +202,61 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/sp_working_days"
+                android:id="@+id/sp_startingDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Mondays - Saturdays"
+                android:text="Mondays"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/sp_working_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/sp_endingDate"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Sundays"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/sp_startingTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="9am - 5pm"
+                android:text="9am"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/sp_endingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="8pm"
+                android:textColor="@color/black"
+                android:textSize="14sp"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
