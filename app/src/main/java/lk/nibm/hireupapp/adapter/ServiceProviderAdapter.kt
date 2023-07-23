@@ -1,14 +1,17 @@
 package lk.nibm.hireupapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.common.CategoryDataManager
+import lk.nibm.hireupapp.common.ServiceProviderDataManager
 import lk.nibm.hireupapp.model.ServiceProviders
 
 class ServiceProviderAdapter (private val itemList: List<ServiceProviders>) : RecyclerView.Adapter<ServiceProviderAdapter.ViewHolder>() {
@@ -20,6 +23,7 @@ class ServiceProviderAdapter (private val itemList: List<ServiceProviders>) : Re
         private var image : ImageView
         private var city : TextView
         private var district : TextView
+        val cardView : CardView = itemView.findViewById(R.id.spCard)
 
         init {
             name = itemView.findViewById(R.id.txtSPCardServiceProviderName)
@@ -29,6 +33,7 @@ class ServiceProviderAdapter (private val itemList: List<ServiceProviders>) : Re
             image = itemView.findViewById(R.id.imgSPCardProfilePicture)
             city = itemView.findViewById(R.id.txtSPCardCity)
             district = itemView.findViewById(R.id.txtSpCardProvince)
+
 
         }
         fun bind(item: ServiceProviders) {
@@ -56,7 +61,12 @@ class ServiceProviderAdapter (private val itemList: List<ServiceProviders>) : Re
     }
 
     override fun onBindViewHolder(holder: ServiceProviderAdapter.ViewHolder, position: Int) {
-        val item = itemList[position]
+        var item = itemList[position]
+        holder.cardView.setOnClickListener {
+            ServiceProviderDataManager.setProvider(item)
+            val intent = Intent(holder.itemView.context, lk.nibm.hireupapp.activities.SP_details::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
         holder.bind(item)
     }
 

@@ -3,6 +3,7 @@ package lk.nibm.hireupapp.model
 data class ServiceProviders(
     val NIC_back: String? = null,
     val NIC_front: String? = null,
+    val about : String? = null,
     val address : String? = null,
     val city: String? = null,
     val contact: String? = null,
@@ -13,5 +14,6 @@ data class ServiceProviders(
     val nic: String? = null,
     val photoURL : String? = null,
     val price: String? = null,
+    val providerId : String? = null,
     val serviceId: String? = null,
 )
