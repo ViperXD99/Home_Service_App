@@ -22,6 +22,7 @@
             android:layout_marginTop="20dp">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
@@ -133,13 +134,23 @@
 
         <TextView
             android:id="@+id/sp_address"
-            android:layout_width="203dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:text="19/B, Kollupitiya, Colombo 03"
+            android:text="19B Kadawatha Rd,"
             android:textSize="14sp"
+            android:gravity="center"
             tools:ignore="HardcodedText,TextSizeCheck" />
 
+        <TextView
+            android:id="@+id/sp_city"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:text="Dehiwala,"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText,TextSizeCheck" />
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/call_sp"
             android:layout_width="wrap_content"
@@ -159,6 +170,14 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/sp_district"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="Colombo"
+        android:textSize="14sp"
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <LinearLayout
         android:layout_width="wrap_content"
