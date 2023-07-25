@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import lk.nibm.hireupapp.R
-import lk.nibm.hireupapp.model.Category
+import lk.nibm.hireupapp.model.Hardware
 
-class CategoryAdapter(private val itemList: List<Category>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class HardwareAdapter(private val itemList: MutableList<Hardware>) : RecyclerView.Adapter<HardwareAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.home_service_categories, parent, false)
+            .inflate(R.layout.item_shop_home_hardwares, parent, false)
         return ViewHolder(view)
     }
 
@@ -34,12 +34,12 @@ class CategoryAdapter(private val itemList: List<Category>) : RecyclerView.Adapt
 
 
         init {
-            image = itemView.findViewById(R.id.imgCategory)
-            name = itemView.findViewById(R.id.txtCategoryName)
+            image = itemView.findViewById(R.id.hardware_image)
+            name = itemView.findViewById(R.id.hardware_name)
 
         }
 
-        fun bind(item: Category) {
+        fun bind(item: Hardware) {
             name.text = item.name
             Glide.with(itemView)
                 .load(item.image)

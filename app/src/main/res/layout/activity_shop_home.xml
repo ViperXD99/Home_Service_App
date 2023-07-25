@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ShopHome"
+    android:background="@color/background"
+    >
+    <RelativeLayout
+        android:id="@+id/topRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+
+        >
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_fluent_arrow_left_24_filled"
+            />
+        <TextView
+            android:id="@+id/hardware"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hardware"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/backArrow"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/search"
+            app:iconifiedByDefault="false"
+            app:searchHintIcon="@null"
+            app:queryHint="Search..."
+            android:focusable="false"
+            app:searchIcon="@drawable/ic_fluent_arrow_left_24_filled"
+            android:background="@drawable/search_border"
+            android:layout_below="@id/backArrow"
+            android:layout_marginBottom="10dp"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topRelativeLayout">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+
+            <RelativeLayout
+                android:id="@+id/categoryRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topRelativeLayout"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/categoryTitle"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/categorySeeAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/categoryTitle"
+                    android:text="See All"
+                    android:textColor="@color/light_blue"
+                    android:textSize="18dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categoryRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/categoryTitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/hardwareRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/categoryRelativeLayout"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/hardwareTitle"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Top Rated Hardware Stores"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/hardwareSeeAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/hardwareTitle"
+                    android:text="See All"
+                    android:textColor="@color/light_blue"
+                    android:textSize="16dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/hardwareRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/hardwareTitle"
+                    tools:listitem="@layout/item_shop_home_hardwares"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RecommendedRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hardwareRelativeLayout"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/itemTitle"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Recommended For You"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/itemRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/itemTitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    />
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>
