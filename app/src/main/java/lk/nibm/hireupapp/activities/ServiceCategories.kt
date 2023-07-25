@@ -44,7 +44,6 @@ class ServiceCategories : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
             override fun onCancelled(error: DatabaseError) {
-                // Handle any errors that may occur while fetching data
             }
         })
     }
