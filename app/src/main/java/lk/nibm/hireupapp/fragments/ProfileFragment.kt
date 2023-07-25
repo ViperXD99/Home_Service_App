@@ -3,7 +3,6 @@ package lk.nibm.hireupapp.fragments
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.service.autofill.UserData
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +15,13 @@ import com.google.firebase.auth.FirebaseAuth
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.PersonalInformation
 import lk.nibm.hireupapp.activities.SignIn
+import lk.nibm.hireupapp.activities.ViewAddress
 import lk.nibm.hireupapp.common.UserDataManager
 
 class ProfileFragment : Fragment() {
     private lateinit var view : View
     private lateinit var personalInfoTab : LinearLayout
+    private lateinit var addressTab : LinearLayout
     private lateinit var logOutTab : LinearLayout
     private lateinit var email : TextView
     private lateinit var name : TextView
@@ -58,6 +59,10 @@ class ProfileFragment : Fragment() {
             val intent = Intent(requireContext(), PersonalInformation::class.java)
             startActivity(intent)
         }
+        addressTab.setOnClickListener {
+            val intent = Intent(requireContext(), ViewAddress::class.java)
+            startActivity(intent)
+        }
 
         logOutTab.setOnClickListener {
             logout()
@@ -66,6 +71,7 @@ class ProfileFragment : Fragment() {
 
     private fun initializeComponents() {
         personalInfoTab = view.findViewById(R.id.personalInfoTab)
+        addressTab = view.findViewById(R.id.addressTab)
         logOutTab = view.findViewById(R.id.logOutTab)
         name = view.findViewById(R.id.logged_user_name)
         email = view.findViewById(R.id.logged_user_email)

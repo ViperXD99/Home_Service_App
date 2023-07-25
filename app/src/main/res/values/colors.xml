@@ -8,7 +8,7 @@
     <color name="light_grey">#6C7A89</color>
     <color name="light_blue">#1A88EE</color>
 
-  <!--SHAZ-->
+    <!--SHAZ-->
     <color name="dark_gray">#444460</color>
     <color name="light_gray">#6C7A89</color>
     <color name="background">#E8ECF1</color>
@@ -16,4 +16,9 @@
     <color name="light_green">#1BA39C</color>
     <color name="light_purple">#AD5389</color>
     <color name="red">#FFFF0000</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 </resources>
