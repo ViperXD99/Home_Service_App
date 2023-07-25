@@ -1,7 +1,9 @@
 package lk.nibm.hireupapp.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.service.autofill.UserData
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -71,10 +73,20 @@ class ProfileFragment : Fragment() {
     }
 
     private fun logout() {
-        auth.signOut()
-        val intent = Intent(activity, SignIn::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        activity?.finish()
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Logout") { _, _ ->
+                auth.signOut()
+                val intent = Intent(activity, SignIn::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                activity?.finish()
+            }
+            .setNegativeButton("Cancel", null)
+            .create()
+
+        alertDialog.show()
     }
+
 }
