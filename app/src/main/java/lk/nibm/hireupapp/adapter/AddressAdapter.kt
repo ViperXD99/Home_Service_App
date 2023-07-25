@@ -1,5 +1,6 @@
 package lk.nibm.hireupapp.adapter
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -43,6 +44,21 @@ class AddressAdapter(private val addressList: List<AddressDataClass>) :
         return AddressViewHolder(itemView)
     }
 
+    private fun showDeleteConfirmationDialog(context: Context, onConfirm: () -> Unit) {
+        val alertDialog = AlertDialog.Builder(context)
+            .setTitle("Delete Address")
+            .setMessage("Are you sure you want to delete this address?")
+            .setPositiveButton("Delete") { _, _ ->
+                // User clicked the "Delete" button
+                onConfirm.invoke() // Execute the onConfirm callback
+            }
+            .setNegativeButton("Cancel", null)
+            .create()
+
+        alertDialog.show()
+    }
+
+
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
         val currentAddress = addressList[position]
         holder.fullNameTextView.text = currentAddress.fullName
@@ -58,16 +74,21 @@ class AddressAdapter(private val addressList: List<AddressDataClass>) :
         }
 
         holder.deleteAddressButton.setOnClickListener {
+            // Retrieve the current address data from the adapter
+            val currentAddress = addressList[holder.adapterPosition]
             val addressId = currentAddress.addressId
             if (addressId != null) {
-                val addressRef = databaseReference.child(addressId)
-                addressRef.removeValue()
-                    .addOnSuccessListener {
-                        showToast(holder.itemView.context, "Address deleted successfully!")
-                    }
-                    .addOnFailureListener {
-                        showToast(holder.itemView.context, "Failed to delete address.")
-                    }
+                showDeleteConfirmationDialog(holder.itemView.context) {
+                    // This block will be executed if the user confirms the delete action
+                    val addressRef = databaseReference.child(addressId)
+                    addressRef.removeValue()
+                        .addOnSuccessListener {
+                            showToast(holder.itemView.context, "Address deleted successfully!")
+                        }
+                        .addOnFailureListener {
+                            showToast(holder.itemView.context, "Failed to delete address.")
+                        }
+                }
             }
         }
     }
