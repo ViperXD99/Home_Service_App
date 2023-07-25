@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.databinding.ActivityHomeBinding
+import lk.nibm.hireupapp.fragments.BookingFragment
 import lk.nibm.hireupapp.fragments.HomeFragment
 import lk.nibm.hireupapp.fragments.ProfileFragment
 
@@ -23,6 +24,7 @@ class Home : AppCompatActivity() {
             when(it.itemId){
                 R.id.home_btn -> replaceFragment(HomeFragment())
                 R.id.profile_btn -> replaceFragment(ProfileFragment())
+                R.id.bookings_btn -> replaceFragment(BookingFragment())
             }
             true
         }
