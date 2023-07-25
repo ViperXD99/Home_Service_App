@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/home_btn"
+        android:icon="@drawable/ic_fluent_home_24_filled"
+        android:title="Home"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/chats_btn"
+        android:icon="@drawable/ic_fluent_chat_24_regular"
+        android:title="Chat"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/bookings_btn"
+        android:icon="@drawable/ic_fluent_book_24_regular"
+        android:title="Book"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/orders_btn"
+        android:icon="@drawable/ic_fluent_shopping_bag_24_regular"
+        android:title="Order"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/profile_btn"
+        android:icon="@drawable/ic_fluent_person_24_regular"
+        android:title="Profile"
+        tools:ignore="HardcodedText" />
+</menu>

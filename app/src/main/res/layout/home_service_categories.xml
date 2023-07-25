@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="120dp"
+    tools:ignore="HardcodedText,UseCompoundDrawables"
+    android:orientation="vertical">
+    
+    <ImageView
+        android:id="@+id/imgCategory"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:contentDescription="Service Category Image"/>
+    
+    <TextView
+        android:id="@+id/txtCategoryName"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="Cleaning"
+        android:textAlignment="center"
+         />
+    
+    
+
+</LinearLayout>
