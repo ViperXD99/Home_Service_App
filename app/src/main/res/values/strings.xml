@@ -42,4 +42,7 @@
     <string name="contact_number">Contact Number</string>
     <string name="gender">Gender</string>
     <string name="save_information">Save Information</string>
+    <string name="title_activity_add_address">AddAddress</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
