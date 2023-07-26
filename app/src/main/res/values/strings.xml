@@ -45,4 +45,5 @@
     <string name="title_activity_add_address">AddAddress</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="bottom_sheet_service_provider_fee">Service Provider Fee:</string>
 </resources>

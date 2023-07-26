@@ -1,389 +1,513 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="40dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bottom_sheet_bakground"
-    >
+    style="@style/AppBottomSheetDialogTheme"
+    android:orientation="vertical">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:id="@+id/image"
-        android:src="@color/accent_color"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
-        android:scaleType="centerCrop"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/spProfilePic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:src="@color/accent_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="15dp">
+
+            <TextView
+                android:id="@+id/spName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/image"
+                android:text="Jenn Wilson"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Painting"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
-        android:layout_width="120dp"
-        android:layout_height="30dp"
-        android:id="@+id/name"
-        android:text="Jenn Wilson"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@id/image"/>
-
-
-    <TextView
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/category"
-        android:text="Painting"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:layout_toEndOf="@id/image"
-        android:layout_below="@id/name"
-        android:layout_marginStart="20dp"
-        android:maxLines="1"
-        android:layout_marginBottom="12dp"/>
-
-    <TextView
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/date"
-        android:text="June 09,2023"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_below="@id/category"
-        android:layout_marginStart="25dp"
-        android:maxLines="1"
-        android:layout_marginBottom="12dp"/>
-    <ScrollView
+        android:id="@+id/bookingDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/date"
-        >
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="June 09,2023"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="vertical">
 
-            >
-
-
-
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/arrivalLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/date"
-                >
+                android:orientation="horizontal"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:id="@+id/iconImageArrival"
-                    android:src="@drawable/vector"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="20dp"
                     android:scaleType="centerCrop"
-                    />
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular" />
 
-                <TextView
-                    android:layout_width="160dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/arrival"
-                    android:text="Arrival confirmation"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_toEndOf="@+id/iconImageArrival"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:maxLines="1"
-                    android:layout_marginBottom="12dp"
-                    android:textStyle="bold"
-                    />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/arrivalNote"
-                    android:text="Confirmation will be activated on the\nbooked service date."
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_toEndOf="@+id/iconImageArrival"
-                    android:layout_below="@id/arrival"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    />
+                    <TextView
+                        android:id="@+id/txtViewArrival"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Arrival confirmation"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/arrivalNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Confirmation will be activated on the\nbooked service date."
+                        android:textSize="16sp" />
+                </LinearLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/arrivalConformLayout"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/arrivalConfirmationLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/arrivalLayout"
-                android:layout_marginStart="50dp"
-                android:visibility="visible"
-                >
-                <TextView
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/arrivalConformNote"
-                    android:text="Please confirm the service provider’s arrival to start
-your task."
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
+                android:orientation="horizontal"
+                android:paddingStart="15dp">
 
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    />
-                <Button
-                    android:id="@+id/arrivalConform_btn"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:text="Confirm"
-                    android:layout_marginLeft="20dp"
-                    android:layout_below="@+id/arrivalConformNote"
-                    />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgArrivalConfirmation"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
 
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/serviceLayout"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Arrival confirmation"
+                        android:textColor="@color/light_purple"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtArrivalConfirmation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="Please confirm the service provider’s arrival to start your task."
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnArrivalConfirm"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Confirm" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/arrivalConfirmedLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/arrivalConformLayout"
-                >
+                android:orientation="horizontal"
+                android:padding="15dp">
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:id="@+id/iconImageService"
-                    android:src="@drawable/vector"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="20dp"
                     android:scaleType="centerCrop"
-                    />
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular_gray"/>
 
-                <TextView
-                    android:layout_width="160dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/service"
-                    android:text="Service Completed"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_toEndOf="@+id/iconImageService"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:maxLines="1"
-                    android:layout_marginBottom="12dp"
-                    android:textStyle="bold"
-                    />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/serviceNote"
-                    android:text="Confirmation will be activated after the\nservice provider has completed the task."
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_toEndOf="@+id/iconImageService"
-                    android:layout_below="@id/service"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Arrival confirmation"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/light_gray"/>
 
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Arrival Confirmed Successfully!"
+                        android:textColor="@color/light_gray"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/serviceConformLayout"
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/serviceCompleteLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/serviceLayout"
-                android:layout_marginStart="50dp"
-                android:visibility="visible"
-                >
-                <TextView
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/serviceConformNote"
-                    android:text="Your task is completed by our service provider. Please confirm."
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
+                android:orientation="horizontal"
+                android:paddingStart="15dp">
 
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    />
-                <Button
-                    android:id="@+id/serviceConform_btn"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:text="Confirm"
-                    android:layout_marginLeft="20dp"
-                    android:layout_below="@+id/serviceConformNote"
-                    />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular" />
 
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <RelativeLayout
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Service Completion"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Confirmation will be activated after the service provider completed the task."
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/serviceCompletionConfirmLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="15dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Service Completion"
+                        android:textColor="@color/light_purple"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="Your task is completed by our service provider. Please confirm."
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnServiceComplete"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Confirm"
+
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/serviceCompletedLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="15dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="ServiceCompletion"
+                        android:textSize="16sp"
+                        android:textColor="@color/light_gray"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/light_gray"
+                        android:text="Your Task Completed!"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:id="@+id/paymentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/serviceConformLayout"
-                >
+                android:orientation="horizontal"
+                android:paddingStart="15dp">
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:id="@+id/iconImagePayment"
-                    android:src="@drawable/vector"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="20dp"
                     android:scaleType="centerCrop"
-                    />
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular" />
 
-                <TextView
-                    android:layout_width="160dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/payment"
-                    android:text="Payment"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_toEndOf="@+id/iconImagePayment"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:maxLines="1"
-                    android:layout_marginBottom="12dp"
-                    android:textStyle="bold"
-                    />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/paymentNote"
-                    android:text="Payment option will be activated after the service provider has completed the task."
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_toEndOf="@+id/iconImagePayment"
-                    android:layout_below="@id/payment"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Payment"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="Payment option will be activated after the service completed confirmation."
+                        android:textSize="16sp" />
+                </LinearLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/paymentConformLayout"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/paymentLayout"
-                android:layout_marginStart="50dp"
-                android:visibility="visible"
-                >
-                <TextView
-                    android:id="@+id/spFeeNote"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Service provider fee:"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    />
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spFee"
-                    android:text="Rs. 500"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_toEndOf="@+id/spFeeNote"
-                    />
-                <TextView
-                    android:id="@+id/hireUpFeeNote"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="HireUp fee:"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_below="@+id/spFeeNote"
-                    />
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/hireUpFee"
-                    android:text="Rs. 100"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_toEndOf="@+id/hireUpFeeNote"
-                    android:layout_below="@+id/spFee"
-                    />
-                <TextView
-                    android:id="@+id/totalAmountNote"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:text="Total amount to be paid"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_below="@+id/hireUpFeeNote"
-                    />
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/totalFee"
-                    android:text="Rs. 600"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginStart="70dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_toEndOf="@+id/totalAmountNote"
-                    android:layout_below="@+id/hireUpFee"
-                    />
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp"
+                android:paddingStart="15dp">
 
-                <Button
-                    android:id="@+id/paymentCash_btn"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/totalAmountNote"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="11dp"
-                    android:text="Cash" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
 
-                <Button
-                    android:id="@+id/paymentCard_btn"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:text="Visa"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toEndOf="@+id/paymentCash_btn"
-                    android:layout_marginStart="50dp"
-                    android:layout_below="@+id/totalAmountNote"
-                    android:layout_marginTop="11dp"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Payment"
+                        android:textColor="@color/light_purple"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/bottom_sheet_service_provider_fee"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/txtSpRate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/bottom_sheet_service_provider_fee"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCash"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="Cash"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCard"
+                            android:layout_width="100dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Card"/>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentCashCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="15dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Payment"
+                        android:textSize="16sp"
+                        android:textColor="@color/light_purple"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/bottom_sheet_service_provider_fee"
+                            android:textSize="16sp" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Enter your amount"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
 
-
-
-
-
-
-
-
-
-
-
-
-</RelativeLayout>
+</LinearLayout>
