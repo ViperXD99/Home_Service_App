@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import lk.nibm.hireupapp.R
@@ -85,8 +86,21 @@ class OrderAdapter(private val orderList: List<Order>, private val serviceNameLi
                 val paymentCashCard = view.findViewById<LinearLayout>(R.id.paymentCashCardLayout)
                 val btnArrivalConfirm = view.findViewById<MaterialButton>(R.id.btnArrivalConfirm)
                 val btnServiceComplete = view.findViewById<MaterialButton>(R.id.btnServiceComplete)
+                val txtPayment = view.findViewById<TextInputEditText>(R.id.txtPayment)
+                val spProPic = view.findViewById<ImageView>(R.id.spProfilePic)
+                val spName = view.findViewById<TextView>(R.id.spName)
+                val category = view.findViewById<TextView>(R.id.category)
                 var database : FirebaseDatabase = FirebaseDatabase.getInstance()
                 var orderRef : DatabaseReference = database.reference.child("Orders").child(order.orderID!!)
+
+
+                spName.text = provider.full_name
+                category.text = serviceName
+                val imageUrl = provider.photoURL
+                        Glide.with(view)
+                            .load(imageUrl)
+                            .into(spProPic)
+
                 if (order.arrivalConfirm == "No"){
                     arrivalConfirm.visibility = LinearLayout.GONE
                     arrivalConfirmed.visibility = LinearLayout.GONE
@@ -120,6 +134,10 @@ class OrderAdapter(private val orderList: List<Order>, private val serviceNameLi
                     paymentCashCard.visibility =  LinearLayout.VISIBLE
                     serviceCompleted.visibility = LinearLayout.VISIBLE
                     arrivalConfirmed.visibility = LinearLayout.VISIBLE
+                    txtPayment.setText(provider.price)
+                    txtPayment.setOnClickListener{
+                        txtPayment.requestFocus()
+                    }
                 }
 
                 arrival.setOnClickListener {
