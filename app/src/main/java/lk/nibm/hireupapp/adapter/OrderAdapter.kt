@@ -97,9 +97,9 @@ class OrderAdapter(private val orderList: List<Order>, private val serviceNameLi
                 spName.text = provider.full_name
                 category.text = serviceName
                 val imageUrl = provider.photoURL
-                        Glide.with(view)
-                            .load(imageUrl)
-                            .into(spProPic)
+                Glide.with(view)
+                    .load(imageUrl)
+                    .into(spProPic)
 
                 if (order.arrivalConfirm == "No"){
                     arrivalConfirm.visibility = LinearLayout.GONE
