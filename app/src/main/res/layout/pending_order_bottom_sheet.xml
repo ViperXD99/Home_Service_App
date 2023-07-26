@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_background"
+    >
+    <RelativeLayout
+        android:id="@+id/userLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/image"
+            android:src="@color/accent_color"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:id="@+id/name"
+            android:text="Jenn Wilson"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/image"/>
+
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/category"
+            android:text="Painting"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_toEndOf="@id/image"
+            android:layout_below="@id/name"
+            android:layout_marginStart="20dp"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/iconImage"
+            android:src="@drawable/vector"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="10dp"
+
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/image"
+            />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/location"
+            android:text="19/B, Kollupitiya, Colombo 03 "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_below="@id/category"
+            android:layout_marginStart="10dp"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp"
+            android:layout_toEndOf="@+id/iconImage"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/paymentHeading"
+            android:text="Start From : "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_below="@id/iconImage"
+            android:layout_marginStart="25dp"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/payment"
+            android:text="1500.00"
+            android:textColor="@color/light_purple"
+            android:textSize="16sp"
+            android:layout_below="@id/iconImage"
+            android:layout_toEndOf="@+id/paymentHeading"
+            android:layout_marginStart="25dp"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/detailsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userLayout"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookingDateHeading"
+            android:text="Booking Date"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookingDate"
+            android:text="Tuesday, June 27, 2023"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_background"
+            android:layout_below="@+id/bookingDateHeading"
+            android:padding="16dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/locationHeading"
+            android:text="Your Location"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/bookingDate"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/locationDetails"
+            android:text="Andrew Silva\n+9477 6784673\n56/B, Sethsiri Mawatha\nBorupana, Agulana, Western Province"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_background"
+            android:layout_below="@+id/locationHeading"
+            android:padding="16dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/descHeading"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/locationDetails"
+            android:layout_marginTop="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/descDetails"
+            android:text="I have to get my home painted. A two story house about 12000 sqft."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_background"
+            android:layout_below="@+id/descHeading"
+            android:padding="16dp"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/orderBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detailsLayout"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        >
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel Booking"
+            />
+        <Button
+            android:id="@+id/closeBtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="close"
+            android:layout_toEndOf="@+id/cancelBtn"
+            android:layout_marginStart="40dp"
+
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
