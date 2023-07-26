@@ -15,6 +15,9 @@
         android:theme="@style/Theme.HireUpApp"
         tools:targetApi="31">
         <activity
+            android:name=".activities.Chat"
+            android:exported="false" />
+        <activity
             android:name=".adapter.HardwareRecyclerViewAdapter"
             android:exported="false" />
         <activity
