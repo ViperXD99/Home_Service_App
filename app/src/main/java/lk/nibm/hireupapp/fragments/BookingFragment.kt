@@ -57,6 +57,7 @@ class BookingFragment : Fragment() {
         val serviceCategoriesRef = database.getReference("Service Categories")
         val serviceProviderRef = database.getReference("Service_Providers")
 
+
         ordersRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 orderList.clear()
