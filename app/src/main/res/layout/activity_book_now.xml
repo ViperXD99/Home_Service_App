@@ -8,19 +8,20 @@
     android:orientation="vertical"
     tools:context=".activities.BookNow">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
+                android:layout_width="55dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:backgroundTint="@color/white"
@@ -36,18 +37,19 @@
                 android:text="Book Now"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="2dp"
         android:layout_gravity="center"
-        android:background="@color/black" />
+        android:background="?android:attr/listDivider" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,6 +87,7 @@
                     android:text="Jenn Wilson"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
@@ -123,7 +126,7 @@
 
             <TextView
                 android:id="@+id/sp_serviceName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Cleaning"
@@ -161,7 +164,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:text="19B Kadawatha Rd,"
+            android:text="19B Kadawatha Rd"
+            android:textSize="14sp"
+            android:gravity="center"
+            tools:ignore="HardcodedText,TextSizeCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=","
             android:textSize="14sp"
             android:gravity="center"
             tools:ignore="HardcodedText,TextSizeCheck" />
@@ -171,10 +182,19 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:text="Dehiwala,"
+            android:layout_marginStart="5dp"
+            android:text="Dehiwala"
             android:textSize="14sp"
             tools:ignore="HardcodedText,TextSizeCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=","
+            android:textSize="14sp"
+            android:gravity="center"
+            tools:ignore="HardcodedText,TextSizeCheck" />
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/call_sp"
             android:layout_width="wrap_content"
@@ -200,7 +220,7 @@
         android:id="@+id/sp_district"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="54dp"
         android:text="Colombo"
         android:textSize="14sp"
         tools:ignore="HardcodedText,TextSizeCheck" />
@@ -388,7 +408,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp"
+            android:gravity="top"
+            android:backgroundTint="@color/white"/>
     </RelativeLayout>
 
 
@@ -397,7 +421,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="-10dp"
         android:text="@string/book_now"
         tools:ignore="TouchTargetSizeCheck" />
