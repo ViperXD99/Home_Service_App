@@ -2,11 +2,11 @@ package lk.nibm.hireupapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.style.TtsSpan.OrdinalBuilder
 import androidx.fragment.app.Fragment
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.databinding.ActivityHomeBinding
 import lk.nibm.hireupapp.fragments.BookingFragment
+import lk.nibm.hireupapp.fragments.ChatSpFragment
 import lk.nibm.hireupapp.fragments.HomeFragment
 import lk.nibm.hireupapp.fragments.OrdersFragment
 import lk.nibm.hireupapp.fragments.ProfileFragment
@@ -28,6 +28,7 @@ class Home : AppCompatActivity() {
                 R.id.profile_btn -> replaceFragment(ProfileFragment())
                 R.id.bookings_btn -> replaceFragment(BookingFragment())
                 R.id.orders_btn -> replaceFragment(OrdersFragment())
+                R.id.chats_btn -> replaceFragment(ChatSpFragment())
 
             }
             true

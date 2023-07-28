@@ -55,4 +55,6 @@
     <string name="in_progress">In Progress</string>
     <string name="painting">Painting</string>
     <string name="booking">Booking</string>
+    <string name="bottom_sheet_service_provider_fee">Service Provider Fee:</string>
+
 </resources>
