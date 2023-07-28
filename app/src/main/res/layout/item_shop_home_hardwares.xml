@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,7 +15,8 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="30dp">
+        app:cardCornerRadius="30dp"
+        tools:ignore="TextSizeCheck">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,28 +35,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/sample_profile_picture" />
+                    android:src="@drawable/sample_profile_picture"
+                    tools:ignore="ContentDescription" />
 
             </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/hardware_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="16sp"
                 android:layout_marginTop="5dp"
+                android:gravity="top"
                 android:text="Insee Cement (50Kg)"
-                android:gravity="top" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/hardware_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:gravity="top"
                 android:text="Insee Cement (50Kg)"
-                android:gravity="top" />
-
+                tools:ignore="HardcodedText" />
 
 
             <LinearLayout
@@ -67,7 +71,8 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_fluent_star_half_24_filled__1_" />
+                    android:src="@drawable/ic_fluent_star_half_24_filled__1_"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 <TextView
                     android:id="@+id/hardware_rate"
@@ -75,14 +80,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="4.8"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="|"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
 
 
                 <TextView
@@ -91,14 +98,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="107"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Reviews"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 

@@ -45,5 +45,16 @@
     <string name="title_activity_add_address">AddAddress</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="edit_my_address">Edit My Address</string>
+    <string name="district">District</string>
+    <string name="city">City</string>
+    <string name="save_address">Save Address</string>
+    <string name="update_my_address">Update My Address</string>
+    <string name="update_address">Update Address</string>
+    <string name="add_address">Add Address</string>
+    <string name="in_progress">In Progress</string>
+    <string name="painting">Painting</string>
+    <string name="booking">Booking</string>
     <string name="bottom_sheet_service_provider_fee">Service Provider Fee:</string>
+
 </resources>

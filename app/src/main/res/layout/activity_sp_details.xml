@@ -143,8 +143,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
-                    android:text="19B Kadawatha Rd,"
+                    android:text="19B Kadawatha Rd"
                     android:textSize="14sp"
+                    tools:ignore="HardcodedText,TextSizeCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text=","
+                    android:textSize="14sp"
+                    android:gravity="center"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 
                 <TextView
@@ -152,8 +160,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
-                    android:text="Dehiwala,"
+                    android:text="Dehiwala"
                     android:textSize="14sp"
+                    tools:ignore="HardcodedText,TextSizeCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text=","
+                    android:textSize="14sp"
+                    android:gravity="center"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 
                 <TextView
