@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -17,8 +18,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.ViewAddress
 import lk.nibm.hireupapp.common.UserDataManager
@@ -343,6 +347,115 @@ class OrderAdapter(
 
 
             }
+            if (order.status == "Pending"){
+                val view = LayoutInflater.from(context).inflate(R.layout.pending_booking_bottom_sheet, null)
+                bottomSheetDialog.setContentView(view)
+                val spName = view.findViewById<TextView>(R.id.txtSPName)
+                val spCategory = view.findViewById<TextView>(R.id.txtSPCategory)
+                val spCardAddress = view.findViewById<TextView>(R.id.txtSPCardAddress)
+                val spCardCity = view.findViewById<TextView>(R.id.txtSPCardCity)
+                val spCardDistrict = view.findViewById<TextView>(R.id.txtSPDistrict)
+                val txtStartingFrom = view.findViewById<TextView>(R.id.txtStartingFrom)
+                val txtBookingDate = view.findViewById<TextView>(R.id.txtBookingDate)
+                val txtAddressName = view.findViewById<TextView>(R.id.txtAddressName)
+                val txtAddressContact = view.findViewById<TextView>(R.id.txtAddressContact)
+                val txtAddressView = view.findViewById<TextView>(R.id.txtAddressView)
+                val txtCityView = view.findViewById<TextView>(R.id.txtCityView)
+                val txtDistrictView = view.findViewById<TextView>(R.id.txtDistrictView)
+                val txtDescription = view.findViewById<TextView>(R.id.txtDescription)
+                val btnCancelBooking = view.findViewById<Button>(R.id.btnCancelBooking)
+                val btnClose = view.findViewById<Button>(R.id.btnClose)
+                val spProfileImage = view.findViewById<ImageView>(R.id.spProfileImage)
+                val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+                val addressRef: DatabaseReference =
+                    database.reference.child("Users").child(order.customerID!!).child("address").child(order.addressID!!)
+                addressRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            val address = dataSnapshot.getValue(AddressDataClass::class.java)
+                        // Now that you have the list of addresses, display the first one in the TextView
+                            txtAddressView.text = address?.address
+                            txtCityView.text = address?.city
+                            txtDistrictView.text = address?.province
+                            txtAddressContact.text = address?.contactNumber
+                            txtAddressName.text = address?.fullName
+
+
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Handle the error if any
+                    }
+                })
+                spName.text = provider.full_name
+                spCategory.text = serviceName
+                spCardAddress.text = provider.address
+                spCardCity.text = provider.city
+                spCardDistrict.text = provider.district
+                txtStartingFrom.text = provider.price
+                txtBookingDate.text = order.bookingDate
+                txtDescription.text = order.description
+                val imageUrl = provider.photoURL
+                Glide.with(view)
+                    .load(imageUrl)
+                    .into(spProfileImage)
+                bottomSheetDialog.show()
+            }
+
+            if (order.status == "Accepted"){
+                val view = LayoutInflater.from(context).inflate(R.layout.pending_booking_bottom_sheet, null)
+                bottomSheetDialog.setContentView(view)
+                val spName = view.findViewById<TextView>(R.id.txtSPName)
+                val spCategory = view.findViewById<TextView>(R.id.txtSPCategory)
+                val spCardAddress = view.findViewById<TextView>(R.id.txtSPCardAddress)
+                val spCardCity = view.findViewById<TextView>(R.id.txtSPCardCity)
+                val spCardDistrict = view.findViewById<TextView>(R.id.txtSPDistrict)
+                val txtStartingFrom = view.findViewById<TextView>(R.id.txtStartingFrom)
+                val txtBookingDate = view.findViewById<TextView>(R.id.txtBookingDate)
+                val txtAddressName = view.findViewById<TextView>(R.id.txtAddressName)
+                val txtAddressContact = view.findViewById<TextView>(R.id.txtAddressContact)
+                val txtAddressView = view.findViewById<TextView>(R.id.txtAddressView)
+                val txtCityView = view.findViewById<TextView>(R.id.txtCityView)
+                val txtDistrictView = view.findViewById<TextView>(R.id.txtDistrictView)
+                val txtDescription = view.findViewById<TextView>(R.id.txtDescription)
+                val btnCancelBooking = view.findViewById<Button>(R.id.btnCancelBooking)
+                val btnClose = view.findViewById<Button>(R.id.btnClose)
+                val spProfileImage = view.findViewById<ImageView>(R.id.spProfileImage)
+                btnCancelBooking.visibility = Button.GONE
+                val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+                val addressRef: DatabaseReference =
+                    database.reference.child("Users").child(order.customerID!!).child("address").child(order.addressID!!)
+                addressRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        val address = dataSnapshot.getValue(AddressDataClass::class.java)
+                        // Now that you have the list of addresses, display the first one in the TextView
+                        txtAddressView.text = address?.address
+                        txtCityView.text = address?.city
+                        txtDistrictView.text = address?.province
+                        txtAddressContact.text = address?.contactNumber
+                        txtAddressName.text = address?.fullName
+
+
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Handle the error if any
+                    }
+                })
+                spName.text = provider.full_name
+                spCategory.text = serviceName
+                spCardAddress.text = provider.address
+                spCardCity.text = provider.city
+                spCardDistrict.text = provider.district
+                txtStartingFrom.text = provider.price
+                txtBookingDate.text = order.bookingDate
+                txtDescription.text = order.description
+                val imageUrl = provider.photoURL
+                Glide.with(view)
+                    .load(imageUrl)
+                    .into(spProfileImage)
+                bottomSheetDialog.show()
+            }
+
 
         }
         if (order.arrivalConfirm == "Yes" && order.completeConfirm == "Yes" && order.paid == "Yes") {
