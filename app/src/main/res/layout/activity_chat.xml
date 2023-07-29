@@ -16,12 +16,12 @@
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:layout_marginLeft="15dp"
+            android:src="@drawable/ic_fluent_arrow_left_24_filled"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            />
+            tools:ignore="ContentDescription" />
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -35,15 +35,17 @@
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
 
         <TextView
+            android:id="@+id/serviceProviderName"
             android:layout_width="120dp"
             android:layout_height="30dp"
-            android:id="@+id/serviceProviderName"
-            android:text="Name"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/recImage"/>
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@id/recImage"
+            android:text="@string/jenn_wilson"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
 
 
 
@@ -53,12 +55,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
-        android:layout_below="@id/mainLinearLayout"
-        android:layout_above="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/chat_card"
-        />
+        android:layout_height="578dp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_below="@id/mainLinearLayout"
+        android:layout_marginBottom="14dp"
+        android:background="@color/background"
+        tools:listitem="@layout/chat_card" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -67,26 +70,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
         android:weightSum="100"
         >
+
         <EditText
             android:id="@+id/messageBox"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="80"
             android:background="@drawable/message_box"
             android:hint="Type a message"
-            android:layout_weight="80"
-            />
+            android:paddingStart="20dp"
+            android:textColorHint="#757575"
+            tools:ignore="HardcodedText,RtlSymmetry,TextFields,TouchTargetSizeCheck" />
+
         <Button
             android:id="@+id/sendButton"
-            android:layout_width="3dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="30dp"
             android:background="@drawable/baseline_send_24"
-            android:layout_weight="16"
-            />
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </LinearLayout>
 

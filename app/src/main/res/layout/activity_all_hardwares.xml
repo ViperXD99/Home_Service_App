@@ -23,20 +23,21 @@
             android:layout_marginStart="10dp">
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="65dp"
+                android:layout_width="59dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                app:icon="@drawable/ic_fluent_arrow_left_24_regular"
-                app:iconSize="30dp"
+                android:gravity="center"
+                app:icon="@drawable/ic_fluent_arrow_left_24_filled"
+                app:iconSize="0dp"
                 app:iconTint="@color/primary_color"
-                tools:ignore="SpeakableTextPresentCheck"
-                android:gravity="center"/>
+                tools:ignore="SpeakableTextPresentCheck" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hardware's"
+                android:textColor="@color/black"
                 tools:ignore="HardcodedText"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
