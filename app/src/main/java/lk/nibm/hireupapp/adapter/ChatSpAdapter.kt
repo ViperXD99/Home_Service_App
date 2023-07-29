@@ -14,6 +14,7 @@ import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.Chat
 import lk.nibm.hireupapp.model.ChatSp
 import lk.nibm.hireupapp.model.ServiceProviders
+import lk.nibm.hireupapp.model.User
 
 class ChatSpAdapter(private val chatSpList: List<ChatSp>, private val serviceNameList : List<String>, private val providerList : List<ServiceProviders>) : RecyclerView.Adapter<ChatSpAdapter.ViewHolder>(){
 
@@ -47,13 +48,21 @@ class ChatSpAdapter(private val chatSpList: List<ChatSp>, private val serviceNam
         val chatSp = chatSpList[position]
         val serviceName = serviceNameList[position]
         val provider = providerList[position]
+        //val user = userList[position]
         holder.bind(chatSp,serviceName, provider)
 
 
         holder.cardView.setOnClickListener {
                 //Toast.makeText(holder.itemView.context, "Clicked", Toast.LENGTH_SHORT).show()
             val intent = Intent(holder.itemView.context, Chat::class.java)
+
+            intent.putExtra("providerId", chatSpList[position].providerId) // new for chat
+            intent.putExtra("providerName", providerList[position].full_name) // new for chat
+            intent.putExtra("providerPhoto", providerList[position].photoURL) // new for chat
+
             holder.itemView.context.startActivity(intent)
+
+
 
         }
     }
