@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -134,6 +135,7 @@ class OrderAdapter(private val orderList: List<Order>, private val serviceNameLi
                     paymentCashCard.visibility =  LinearLayout.VISIBLE
                     serviceCompleted.visibility = LinearLayout.VISIBLE
                     arrivalConfirmed.visibility = LinearLayout.VISIBLE
+                    bottomSheetDialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
                     txtPayment.setText(provider.price)
                     txtPayment.setOnClickListener{
                         txtPayment.requestFocus()
