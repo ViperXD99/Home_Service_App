@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine1"
             android:text="@string/booking"
-            android:textSize="22sp"
+            android:textSize="19sp"
             android:textStyle="bold"
             android:layout_marginStart="15dp"
             />

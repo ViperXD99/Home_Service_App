@@ -8,14 +8,12 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/hardware_card"
-        android:layout_width="160dp"
-        android:layout_height="260dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardElevation="0dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="10dp"
         tools:ignore="TextSizeCheck">
 
         <LinearLayout
@@ -25,10 +23,11 @@
             android:padding="10dp">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="140dp"
-                android:layout_height="142dp"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="30dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
 
                 <ImageView
                     android:id="@+id/hardware_image"
@@ -47,9 +46,11 @@
                 android:layout_marginTop="5dp"
                 android:gravity="top"
                 android:text="Insee Cement (50Kg)"
-                android:textSize="16sp"
+                android:layout_gravity="left"
+                android:textSize="13sp"
                 android:textStyle="bold"
-                tools:ignore="HardcodedText" />
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText,RtlHardcoded" />
 
             <TextView
                 android:id="@+id/hardware_address"
@@ -57,20 +58,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="top"
-                android:text="Insee Cement (50Kg)"
-                tools:ignore="HardcodedText" />
+                android:layout_gravity="left"
+                android:text="Rs.1000.00"
+                android:textColor="@color/dark_gray"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <ImageView
 
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@drawable/ic_fluent_star_half_24_filled__1_"
                     tools:ignore="ContentDescription,ImageContrastCheck" />
 
@@ -80,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="4.8"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -88,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="|"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     tools:ignore="HardcodedText" />
 
 
@@ -98,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="107"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -106,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Reviews"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>

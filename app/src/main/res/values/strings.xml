@@ -56,5 +56,11 @@
     <string name="painting">Painting</string>
     <string name="booking">Booking</string>
     <string name="bottom_sheet_service_provider_fee">Service Provider Fee:</string>
+    <string name="hardware">Hardware</string>
+    <string name="categories">Categories</string>
+    <string name="see_all">See All</string>
+    <string name="chat">Chat</string>
+    <string name="name">Name</string>
+    <string name="messages">Messages</string>
 
 </resources>
