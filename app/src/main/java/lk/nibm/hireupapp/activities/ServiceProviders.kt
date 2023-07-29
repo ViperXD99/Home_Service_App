@@ -41,7 +41,6 @@ class ServiceProviders : AppCompatActivity() {
         adapter = ServiceProviderAdapter(itemList)
         serviceProviders.adapter = adapter
         databaseReference = FirebaseDatabase.getInstance().reference.child("Service_Providers")
-        Toast.makeText(applicationContext, id, Toast.LENGTH_SHORT).show()
         val query: Query = databaseReference.orderByChild("serviceId").equalTo(id)
         query.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")

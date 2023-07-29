@@ -63,7 +63,7 @@ class BookNow : AppCompatActivity() {
     private lateinit var txtAddressDistrict: TextView
     private val addressList = mutableListOf<AddressDataClass>()
     private var addressID: String? = null
-    private lateinit var orderData : Order
+    private lateinit var orderData: Order
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -127,7 +127,7 @@ class BookNow : AppCompatActivity() {
             startActivity(intent)
         }
         btnBook.setOnClickListener {
-            if (isValidated()){
+            if (isValidated()) {
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Confirmation")
                     .setMessage("Are you sure you want to add a booking?")
@@ -148,7 +148,7 @@ class BookNow : AppCompatActivity() {
         }
     }
 
-    private fun isValidated(): Boolean{
+    private fun isValidated(): Boolean {
         val customer = UserDataManager.getUser()
         val provider = ServiceProviderDataManager.getProvider()
         val addressID = addressID.toString()
@@ -162,6 +162,7 @@ class BookNow : AppCompatActivity() {
         val serviceID = CategoryDataManager.id
         val spArrivalConfirm = ""
         val spCompleteConfirm = ""
+        val isPaid = ""
         val status = OrderStatuses.pending
         if (bookingDate.isEmpty()) {
             selectDate.error = " Please select a date"
@@ -173,13 +174,14 @@ class BookNow : AppCompatActivity() {
             txtOrderDescription.requestFocus()
             return false
         }
-         orderData = Order(
+        orderData = Order(
             addressID,
             arrivalConfirm,
             bookingDate,
             completeConfirm,
             customerID,
             description,
+            isPaid,
             orderID,
             providerID,
             serviceID,
@@ -188,8 +190,8 @@ class BookNow : AppCompatActivity() {
             status
         )
         return true
-
     }
+
     private fun addBooking() {
         if (orderData.orderID != null) {
             userOrderRef = database.reference.child("Orders").child(orderData.orderID.toString())
@@ -228,7 +230,7 @@ class BookNow : AppCompatActivity() {
         val calendar = Calendar.getInstance()
         calendar.set(year, month, day)
 
-        val dateFormat = SimpleDateFormat("EEE, dd, yyyy", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("MMM, dd, yyyy", Locale.getDefault())
         return dateFormat.format(calendar.time)
     }
 

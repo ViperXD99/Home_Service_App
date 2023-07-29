@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppBottomSheetDialogTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="40dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bottom_sheet_bakground"
-    style="@style/AppBottomSheetDialogTheme"
     android:orientation="vertical">
 
     <LinearLayout
@@ -170,7 +170,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular_gray"/>
+                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -183,9 +183,9 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginBottom="15dp"
                         android:text="Arrival confirmation"
+                        android:textColor="@color/light_gray"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/light_gray"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -307,8 +307,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -316,8 +316,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginBottom="15dp"
                         android:text="ServiceCompletion"
-                        android:textSize="16sp"
                         android:textColor="@color/light_gray"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -325,8 +325,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginBottom="15dp"
-                        android:textColor="@color/light_gray"
                         android:text="Your Task Completed!"
+                        android:textColor="@color/light_gray"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -365,8 +365,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginBottom="15dp"
                         android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="15dp"
                         android:text="Payment option will be activated after the service completed confirmation."
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -375,135 +375,232 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/paymentConfirm"
+                android:id="@+id/paymentCashCardLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginBottom="15dp"
-                android:paddingStart="15dp">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginBottom="15dp"
-                        android:text="Payment"
-                        android:textColor="@color/light_purple"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:text="@string/bottom_sheet_service_provider_fee"
-                            android:textSize="16sp" />
-                        <TextView
-                            android:id="@+id/txtSpRate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:text="@string/bottom_sheet_service_provider_fee"
-                            android:textSize="16sp" />
+                            android:layout_marginBottom="15dp"
+                            android:text="Payment"
+                            android:textColor="@color/light_purple"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:text="@string/bottom_sheet_service_provider_fee"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtSpRate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:text="@string/bottom_sheet_service_provider_fee"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnCash"
-                            android:layout_width="100dp"
-                            android:layout_height="48dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="Cash"/>
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnCard"
-                            android:layout_width="100dp"
-                            android:layout_height="48dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Card"/>
-                    </LinearLayout>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCash"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Cash" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCard"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Card" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/paymentCashCardLayout"
+                android:id="@+id/paymentConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="15dp"
-                android:layout_marginBottom="100dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
+                android:orientation="vertical"
+                android:paddingStart="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginBottom="15dp"
-                        android:text="Payment"
-                        android:textSize="16sp"
-                        android:textColor="@color/light_purple"
-                        android:textStyle="bold" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:text="Payment"
+                            android:textColor="@color/light_purple"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:text="@string/bottom_sheet_service_provider_fee"
-                            android:textSize="16sp" />
-                        <com.google.android.material.textfield.TextInputLayout
+                            android:text="Cash Payment"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp">
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/txtPayment"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:text="@string/bottom_sheet_service_provider_fee"
+                                android:textSize="16sp" />
+
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Enter your amount"/>
-                        </com.google.android.material.textfield.TextInputLayout>
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txtPayment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Enter your amount" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProceed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Proceed" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentConfirmed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:orientation="vertical"
+                android:paddingStart="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_fluent_checkmark_circle_24_regular__1_" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:text="Payment"
+                            android:textColor="@color/light_purple"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:text="Total Amount Paid : "
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/txtPaidAmount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:text="Total Amount Paid : "
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="Payment Confirmation Pending "/>
+                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
