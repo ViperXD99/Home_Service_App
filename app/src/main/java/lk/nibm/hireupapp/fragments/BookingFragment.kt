@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -56,6 +57,7 @@ class BookingFragment : Fragment() {
         val ordersRef = database.getReference("Orders")
         val serviceCategoriesRef = database.getReference("Service Categories")
         val serviceProviderRef = database.getReference("Service_Providers")
+
 
         ordersRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
