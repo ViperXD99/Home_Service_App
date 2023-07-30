@@ -69,5 +69,6 @@
     <string name="rate_your_service_provider">Rate your service provider</string>
     <string name="leave_your_feedback">Leave your feedback</string>
     <string name="submit">Submit</string>
+    <string name="remove">Remove</string>
 
 </resources>
