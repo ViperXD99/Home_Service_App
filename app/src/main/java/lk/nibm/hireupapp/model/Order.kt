@@ -7,6 +7,7 @@ data class Order(
     val completeConfirm : String? = null,
     val customerID : String? = null,
     val description : String? = null,
+    val paid : String? = null,
     val orderID : String? = null,
     val providerID : String? = null,
     val serviceID : String? = null,
