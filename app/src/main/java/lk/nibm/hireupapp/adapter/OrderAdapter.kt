@@ -25,10 +25,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.ViewAddress
+import lk.nibm.hireupapp.common.ReviewRating
 import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.model.AddressDataClass
 import lk.nibm.hireupapp.model.BookingPayment
 import lk.nibm.hireupapp.model.Order
+import lk.nibm.hireupapp.model.ReviewsAndRatings
 import lk.nibm.hireupapp.model.ServiceProviders
 
 class OrderAdapter(
@@ -399,6 +401,10 @@ class OrderAdapter(
                     .load(imageUrl)
                     .into(spProfileImage)
                 bottomSheetDialog.show()
+
+                btnClose.setOnClickListener {
+                    bottomSheetDialog.dismiss()
+                }
             }
 
             if (order.status == "Accepted"){
@@ -454,6 +460,77 @@ class OrderAdapter(
                     .load(imageUrl)
                     .into(spProfileImage)
                 bottomSheetDialog.show()
+                btnClose.setOnClickListener {
+                    bottomSheetDialog.dismiss()
+                }
+            }
+
+            if (order.status == "Completed"){
+                val view = LayoutInflater.from(context).inflate(R.layout.completed_order_bottom_sheet, null)
+                bottomSheetDialog.setContentView(view)
+                val spCompletedName = view.findViewById<TextView>(R.id.txtCompletedSPName)
+                val spCompletedCategory = view.findViewById<TextView>(R.id.txtCompletedSPCategory)
+                val spCompletedAddress = view.findViewById<TextView>(R.id.txtSPCompletedAddress)
+                val spCompletedCity = view.findViewById<TextView>(R.id.txtSPCompletedCity)
+                val spCompletedDistrict = view.findViewById<TextView>(R.id.txtSPCompletedDistrict)
+                val txtCompletedStartingFrom = view.findViewById<TextView>(R.id.txtCompletedStartingFrom)
+                val txtCompletedBookingDate = view.findViewById<TextView>(R.id.txtCompletedBookingDate)
+                val txtCompletedAddressName = view.findViewById<TextView>(R.id.txtCompletedAddressName)
+                val txtCompletedAddressContact = view.findViewById<TextView>(R.id.txtCompletedAddressContact)
+                val txtCompletedAddressView = view.findViewById<TextView>(R.id.txtCompletedAddressView)
+                val txtCompletedCityView = view.findViewById<TextView>(R.id.txtCompletedCityView)
+                val txtCompletedDistrictView = view.findViewById<TextView>(R.id.txtCompletedDistrictView)
+                val txtCompletedDescription = view.findViewById<TextView>(R.id.txtCompletedDescription)
+                val btnAddReview = view.findViewById<Button>(R.id.btnAddReview)
+                val btnClose = view.findViewById<Button>(R.id.btnClose)
+                val spCompletedProfileImage = view.findViewById<ImageView>(R.id.spCompletedProfileImage)
+
+                spCompletedName.text = provider.full_name
+                spCompletedCategory.text = serviceName
+                spCompletedAddress.text = provider.address
+                spCompletedCity.text = provider.city
+                spCompletedDistrict.text = provider.district
+                txtCompletedStartingFrom.text = provider.price
+                txtCompletedBookingDate.text = order.bookingDate
+                txtCompletedDescription.text = order.description
+                Glide.with(view)
+                    .load(provider.photoURL)
+                    .into(spCompletedProfileImage)
+
+                val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+                val addressRef: DatabaseReference =
+                    database.reference.child("Users").child(order.customerID!!).child("address").child(order.addressID!!)
+                addressRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        val address = dataSnapshot.getValue(AddressDataClass::class.java)
+                        // Now that you have the list of addresses, display the first one in the TextView
+                        txtCompletedAddressView.text = address?.address
+                        txtCompletedCityView.text = address?.city
+                        txtCompletedDistrictView.text = address?.province
+                        txtCompletedAddressContact.text = address?.contactNumber
+                        txtCompletedAddressName.text = address?.fullName
+
+
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Handle the error if any
+                    }
+                })
+                bottomSheetDialog.show()
+                btnClose.setOnClickListener {
+                    bottomSheetDialog.dismiss()
+                }
+                btnAddReview.setOnClickListener {
+                    val intent = Intent(context, lk.nibm.hireupapp.activities.AddReview::class.java)
+                    intent.putExtra("SERVICE_NAME", serviceName)
+                    intent.putExtra("PAID_AMOUNT", provider.price)
+                    intent.putExtra("PROVIDER_NAME", provider.full_name)
+                    intent.putExtra("SP_PHOTO_URL", provider.photoURL)
+                    val reviewData = ReviewsAndRatings(order.bookingDate,order.customerID,"",order.orderID,order.providerID, ratingValue = 0.0,"",order.serviceID)
+                    ReviewRating.setReview(reviewData)
+                    context.startActivity(intent)
+                }
             }
 
 
@@ -463,7 +540,7 @@ class OrderAdapter(
             val orderRef: DatabaseReference =
                 database.reference.child("Orders").child(order.orderID!!)
             orderRef.child("status").setValue("Completed").addOnSuccessListener {
-                Toast.makeText(context, "Service Completed!", Toast.LENGTH_LONG).show()
+
             }
                 .addOnFailureListener {
                     Toast.makeText(context, "Failed!", Toast.LENGTH_LONG).show()
