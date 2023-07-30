@@ -7,7 +7,7 @@
     android:background="@drawable/top_small_rounded_corners"
     tools:ignore="HardcodedText"
     android:orientation="vertical"
-    android:layout_marginStart="15dp"
+    android:layout_marginStart="10dp"
     android:layout_marginTop="15dp">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

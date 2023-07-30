@@ -25,6 +25,7 @@ import lk.nibm.hireupapp.adapter.TopRatedAdapter
 import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.model.Category
 import lk.nibm.hireupapp.model.TopRatedSP
+import java.util.Calendar
 
 
 class HomeFragment : Fragment() {
@@ -43,6 +44,8 @@ class HomeFragment : Fragment() {
     private lateinit var imgProfile : ImageView
     private lateinit var loggedUserName : TextView
     private lateinit var seeAllCategories : TextView
+    private lateinit var imgWelcome : ImageView
+    private lateinit var txtWelcome : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -137,6 +140,8 @@ class HomeFragment : Fragment() {
         imgProfile = view.findViewById(R.id.imgProfile)
         loggedUserName = view.findViewById(R.id.logged_user_name)
         seeAllCategories = view.findViewById(R.id.seeAllCategories)
+        imgWelcome = view.findViewById(R.id.imgWelcome)
+        txtWelcome = view.findViewById(R.id.txtWelcome)
     }
 
     private fun loadProfileDetails() {
@@ -151,6 +156,28 @@ class HomeFragment : Fragment() {
         else{
             Toast.makeText(requireContext(), "Sign In SuccessFul!", Toast.LENGTH_SHORT).show()
         }
+        val calendar = Calendar.getInstance()
+        val hourOfDay = calendar.get(Calendar.HOUR_OF_DAY)
+        when (hourOfDay) {
+            in 6..11 -> {
+                // Show morning image
+                imgWelcome.setImageResource(R.drawable.ic_fluent_weather_sunny_high_24_filled)
+                txtWelcome.text = "Good Morning!"
+            }
+            in 12..16 -> {
+                imgWelcome.setImageResource(R.drawable.ic_fluent_weather_sunny_24_filled)
+                txtWelcome.text = "Good Afternoon!"
+            }
+            in 17..20 -> {
+                imgWelcome.setImageResource(R.drawable.ic_fluent_weather_sunny_low_24_filled)
+                txtWelcome.text = "Good Evening!"
+            }
+            else -> {
+                imgWelcome.setImageResource(R.drawable.ic_fluent_weather_moon_24_filled)
+                txtWelcome.text = "Good Night!"
+            }
+        }
+
     }
 
     private fun categoryRecyclerView() {
