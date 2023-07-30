@@ -50,7 +50,6 @@ class Home : AppCompatActivity() {
         val ordersReference = firebaseDatabase.getReference("Orders")
         val dateFormat = SimpleDateFormat("MMM, dd, yyyy", Locale.getDefault())
         val systemDate = Date(System.currentTimeMillis())
-        Toast.makeText(this, dateFormat.format(systemDate).toString(), Toast.LENGTH_SHORT).show()
         ordersReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (orderSnapshot in dataSnapshot.children) {
