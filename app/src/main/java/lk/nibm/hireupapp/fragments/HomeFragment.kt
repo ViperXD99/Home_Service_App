@@ -20,21 +20,26 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.ServiceCategories
-import lk.nibm.hireupapp.activities.SignIn
 import lk.nibm.hireupapp.adapter.CategoryAdapter
-import lk.nibm.hireupapp.common.CategoryDataManager
+import lk.nibm.hireupapp.adapter.TopRatedAdapter
 import lk.nibm.hireupapp.common.UserDataManager
-import lk.nibm.hireupapp.databinding.FragmentHomeBinding
 import lk.nibm.hireupapp.model.Category
+import lk.nibm.hireupapp.model.TopRatedSP
 
 
 class HomeFragment : Fragment() {
     private lateinit var categoryRecyclerView : RecyclerView
+    private lateinit var topRatedRecyclerView : RecyclerView
     private var layoutManager : RecyclerView.LayoutManager? = null
     private lateinit var view : View
     private lateinit var adapter: CategoryAdapter
+    private lateinit var topAdapter : TopRatedAdapter
     private val itemList = mutableListOf<Category>()
+    private val topSpList = mutableListOf<TopRatedSP>()
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var topRatedRef : DatabaseReference
+    private lateinit var serviceProviderRef : DatabaseReference
+    private lateinit var categoryRef : DatabaseReference
     private lateinit var imgProfile : ImageView
     private lateinit var loggedUserName : TextView
     private lateinit var seeAllCategories : TextView
@@ -48,7 +53,77 @@ class HomeFragment : Fragment() {
         categoryRecyclerView()
         loadProfileDetails()
         clickListeners()
+        topRatedSPRecyclerView()
         return view
+    }
+
+    private fun topRatedSPRecyclerView() {
+        val database = FirebaseDatabase.getInstance()
+        topRatedRecyclerView = view.findViewById(R.id.topRatedRecyclerView)
+        layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        topRatedRecyclerView.layoutManager = layoutManager
+        topAdapter = TopRatedAdapter(topSpList)
+        topRatedRecyclerView.adapter = topAdapter
+        serviceProviderRef = database.reference.child("Service_Providers")
+        serviceProviderRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                topSpList.clear()
+
+                for (serviceProviderSnapshot in snapshot.children) {
+                    val serviceProviderId = serviceProviderSnapshot.key.toString()
+                    val serviceProviderName = serviceProviderSnapshot.child("full_name").value.toString()
+                    val serviceType = serviceProviderSnapshot.child("serviceId").value.toString()
+                    val imageUrl = serviceProviderSnapshot.child("photoURL").value.toString()
+
+                    // Fetch all orders related to this service provider
+                    val ratingRef = database.reference.child("RatingAndReviews")
+                    val serviceProviderRatingRef = ratingRef.orderByChild("providerID").equalTo(serviceProviderId)
+
+                    serviceProviderRatingRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(ordersSnapshot: DataSnapshot) {
+                            var totalRating = 0.0
+                            var totalReviews = 0
+
+                            for (orderSnapshot in ordersSnapshot.children) {
+                                // Fetch the rating from the order node
+                                val rating = orderSnapshot.child("ratingValue").getValue(Double::class.java) ?: 0.0
+                                totalRating += rating
+                                totalReviews++
+                            }
+
+                            // Calculate the average rating for this service provider
+                            val averageRating = totalRating / totalReviews
+
+                            val serviceProvider = TopRatedSP(
+                                spName = serviceProviderName,
+                                spID = serviceProviderName,
+                                spCategory = serviceType,
+                                spCategoryID = serviceType,
+                                spImageURL = imageUrl,
+                                ratingValue = averageRating,
+                                ratingCount = totalReviews.toString()
+
+
+
+                            )
+
+                            topSpList.add(serviceProvider)
+                            // Sort the list based on average rating in descending order
+                            topSpList.sortBy { it.ratingValue }
+                            topAdapter.notifyDataSetChanged()
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            // Handle any database read errors here
+                        }
+                    })
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle any database read errors here
+            }
+        })
     }
 
     private fun clickListeners() {
