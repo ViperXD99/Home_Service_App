@@ -39,6 +39,7 @@
                 android:gravity="center_vertical">
 
                 <TextView
+                    android:id="@+id/txtWelcome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -54,6 +55,14 @@
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imgWelcome"
+                android:src="@drawable/ic_fluent_weather_sunny_high_24_filled"/>
 
 
         </LinearLayout>
@@ -136,7 +145,8 @@
                 android:id="@+id/topRatedRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:padding="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 tools:listitem="@layout/top_rated_service_provider_card"/>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
