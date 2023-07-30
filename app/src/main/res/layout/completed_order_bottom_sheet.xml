@@ -1,332 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bottom_sheet_bakground"
-    >
-    <RelativeLayout
-        android:id="@+id/userLayout"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bakground">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/image"
-            android:src="@color/accent_color"
-            android:layout_marginStart="25dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="centerCrop"
-            />
-
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="30dp"
-            android:id="@+id/name"
-            android:text="Jenn Wilson"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/image"/>
-
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/category"
-            android:text="@string/painting"
-            android:textColor="@color/light_purple"
-            android:textSize="14sp"
-            android:layout_toEndOf="@id/image"
-            android:layout_below="@id/name"
-            android:layout_marginStart="20dp"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/iconImage"
-            android:src="@drawable/ic_fluent_location_24_regular"
-            android:layout_marginStart="25dp"
-            android:layout_marginBottom="10dp"
-            android:scaleType="centerCrop"
-            android:layout_below="@+id/image"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/address"
-            android:text="19/B"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_below="@id/category"
-            android:layout_marginStart="10dp"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"
-            android:layout_toEndOf="@+id/iconImage"
-            android:layout_marginTop="10dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=","
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_below="@id/category"
-            android:layout_toEndOf="@+id/address"
-            android:layout_marginTop="10dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/city"
-            android:text="Kollupitiya"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_below="@id/category"
-            android:layout_marginStart="10dp"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"
-            android:layout_toEndOf="@+id/address"
-            android:layout_marginTop="10dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=","
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_below="@id/category"
-            android:layout_toEndOf="@+id/city"
-            android:layout_marginTop="10dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/district"
-            android:text="Colombo 03"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_below="@id/category"
-            android:layout_marginStart="10dp"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"
-            android:layout_toEndOf="@+id/city"
-            android:layout_marginTop="10dp"
-            />
-
-        <TextView
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/paymentHeading"
-            android:text="Start From : "
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_below="@id/iconImage"
-            android:layout_marginStart="25dp"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rs."
-            android:textColor="@color/light_purple"
-            android:textSize="16sp"
-            android:layout_below="@id/iconImage"
-            android:layout_toEndOf="@+id/paymentHeading"
-            android:layout_marginBottom="12dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            />
-        <TextView
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/payment"
-            android:text="1500.00"
-            android:textColor="@color/light_purple"
-            android:textSize="16sp"
-            android:layout_below="@id/iconImage"
-            android:layout_toEndOf="@+id/paymentHeading"
-            android:layout_marginStart="25dp"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            />
-
-        <View
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_gravity="center"
-            android:background="?android:attr/listDivider"
-            android:layout_below="@+id/payment"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/spCompletedProfileImage"
+                android:src="@color/accent_color"
+                android:scaleType="centerCrop"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtCompletedSPName"
+                    android:text="@string/jenn_wilson"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_toEndOf="@id/image"/>
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtCompletedSPCategory"
+                    android:text="Painting"
+                    android:textColor="@color/light_purple"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_fluent_location_24_regular"
+                android:scaleType="centerCrop"
+                />
+
+            <TextView
+                android:id="@+id/txtSPCompletedAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colombo"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="," />
+
+            <TextView
+                android:id="@+id/txtSPCompletedCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colombo" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="," />
+
+            <TextView
+                android:id="@+id/txtSPCompletedDistrict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colombo" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Starting From : "
+                android:layout_marginStart="10dp"/>
 
 
+            <TextView
+                android:id="@+id/txtCompletedStartingFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colombo" />
+        </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/detailsLayout"
+    </LinearLayout>
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/userLayout"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        >
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bookingDateHeading"
-            android:text="Booking Date"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bookingDate"
-            android:text="Tuesday, June 27, 2023"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/text_background"
-            android:layout_below="@+id/bookingDateHeading"
-            android:padding="16dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/serviceCompletedDateHeading"
-            android:text="Service Completed Date"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/bookingDate"
-            android:layout_marginTop="20dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/serviceCompletedDateDetails"
-            android:text="Tuesday, July 27, 2023"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/text_background"
-            android:layout_below="@+id/serviceCompletedDateHeading"
-            android:padding="16dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/payment2Heading"
-            android:text="Payment"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/serviceCompletedDateDetails"
-            android:layout_marginTop="20dp"
-            />
-
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/paymentLayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detailsLayout"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/text_background"
-        android:padding="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="20dp"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:paddingTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Booking Date" />
+            <TextView
+                android:id="@+id/txtCompletedBookingDate"
+                android:layout_width="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/border_stroke"
+                android:text="Booking Date" />
+        </LinearLayout>
+
+
         <TextView
-            android:id="@+id/spFeeNote"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HireUp fee:"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="12dp"
-            />
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="Your Location" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_stroke">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_fluent_location_24_filled_teal"
+                android:scaleType="centerCrop"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp">
+                <TextView
+                    android:id="@+id/txtCompletedAddressName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Name" />
+                <TextView
+                    android:id="@+id/txtCompletedAddressContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Contact" />
+                <TextView
+                    android:id="@+id/txtCompletedAddressView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Contact" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/txtCompletedCityView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Contact" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="14sp"
+                        android:text="," />
+                    <TextView
+                        android:id="@+id/txtCompletedDistrictView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textSize="14sp"
+                        android:text="Contact" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spFee"
-            android:text="Rs. 500"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginStart="100dp"
-            android:layout_marginBottom="12dp"
-            android:layout_toEndOf="@+id/spFeeNote"
-            />
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="Description" />
         <TextView
-            android:id="@+id/hireUpFeeNote"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="HireUp fee:"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="12dp"
-            android:layout_below="@+id/spFeeNote"
-            />
+            android:id="@+id/txtCompletedDescription"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:background="@drawable/border_stroke"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:text="Description" />
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hireUpFee"
-            android:text="Rs. 100"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginStart="100dp"
-            android:layout_marginBottom="12dp"
-            android:layout_toEndOf="@+id/hireUpFeeNote"
-            android:layout_below="@+id/spFee"
-            />
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/orderBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/paymentLayout"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-
-        >
-        <Button
-            android:id="@+id/reviewBtn"
-            android:layout_width="150dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="Payment" />
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Review Add"
-            />
-        <Button
-            android:id="@+id/closeBtn"
-            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_stroke"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:text="Total amount paid :" />
+            <TextView
+                android:id="@+id/txtPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:text="Rs.2500.00" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="close"
-            android:layout_toEndOf="@+id/reviewBtn"
-            android:layout_marginStart="40dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnAddReview"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Add Review" />
+            <Button
+                android:id="@+id/btnClose"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="@color/light_gray"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Close" />
 
-            />
-
-    </RelativeLayout>
+        </LinearLayout>
 
 
-</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
