@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <item
         android:id="@+id/home_btn"
-        android:icon="@drawable/ic_fluent_home_24_filled"
+        android:icon="@drawable/ic_fluent_home_24_regular"
         android:title="Home"
         tools:ignore="HardcodedText" />
     <item
