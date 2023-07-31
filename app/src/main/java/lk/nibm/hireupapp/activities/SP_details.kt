@@ -69,8 +69,7 @@ class SP_details : AppCompatActivity() {
             startActivity(intent)
         }
         btnBack.setOnClickListener {
-            val intent = Intent(this, SP_details::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
     }
 

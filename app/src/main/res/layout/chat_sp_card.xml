@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/spName"
-            android:layout_width="120dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
@@ -41,7 +41,7 @@
 
 
         <TextView
-            android:layout_width="140dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spCategory"
             android:text="Category"

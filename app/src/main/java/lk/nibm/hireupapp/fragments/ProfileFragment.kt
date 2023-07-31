@@ -16,6 +16,7 @@ import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.PersonalInformation
 import lk.nibm.hireupapp.activities.SignIn
 import lk.nibm.hireupapp.activities.ViewAddress
+import lk.nibm.hireupapp.common.AppPreferences
 import lk.nibm.hireupapp.common.UserDataManager
 
 class ProfileFragment : Fragment() {
@@ -27,10 +28,12 @@ class ProfileFragment : Fragment() {
     private lateinit var name : TextView
     private lateinit var proPic : ImageView
     private lateinit var auth: FirebaseAuth
+    private lateinit var appPreferences: AppPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        appPreferences = AppPreferences(requireContext())
     }
 
     override fun onCreateView(
@@ -84,6 +87,7 @@ class ProfileFragment : Fragment() {
             .setMessage("Are you sure you want to logout?")
             .setPositiveButton("Logout") { _, _ ->
                 auth.signOut()
+                appPreferences.clearUserData()
                 val intent = Intent(activity, SignIn::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

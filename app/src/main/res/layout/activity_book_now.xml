@@ -8,27 +8,24 @@
     android:orientation="vertical"
     tools:context=".activities.BookNow">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="80dp"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
                 android:backgroundTint="@color/white"
                 android:padding="0dp"
-                app:icon="@drawable/ic_fluent_arrow_left_24_regular"
-                app:iconSize="30dp"
+                app:icon="@drawable/ic_fluent_arrow_left_24_filled"
+                app:iconSize="24dp"
                 app:iconTint="@color/primary_color"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -41,7 +38,6 @@
         </LinearLayout>
 
 
-    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
