@@ -11,9 +11,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.common.CategoryDataManager
 import lk.nibm.hireupapp.common.ServiceProviderDataManager
+import lk.nibm.hireupapp.model.TopRatedSP
 
 class SP_details : AppCompatActivity() {
     private lateinit var spName : TextView
@@ -31,6 +36,10 @@ class SP_details : AppCompatActivity() {
     private lateinit var spBook : Button
     private lateinit var spCall : ImageButton
     private lateinit var btnBack : ImageButton
+    private var totalRating : Double = 0.0
+    private var totalReviews : Int = 0
+    private var averageRating : Double = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sp_details)
@@ -53,13 +62,45 @@ class SP_details : AppCompatActivity() {
             .load(providerData?.photoURL)
             .into(spProPic)
         /*spWorkingHours.text = CategoryDataManager.*/
+        val database = FirebaseDatabase.getInstance()
+        val ratingRef = database.reference.child("RatingAndReviews")
+        val serviceProviderRatingRef = ratingRef.orderByChild("providerID").equalTo(providerData?.providerId)
+        serviceProviderRatingRef.addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(ordersSnapshot: DataSnapshot) {
+                totalRating = 0.0
+                totalReviews = 0
 
+                for (orderSnapshot in ordersSnapshot.children) {
+                    // Fetch the rating from the order node
+                    val rating =
+                        orderSnapshot.child("ratingValue").getValue(Double::class.java)
+                            ?: 0.0
+                    totalRating += rating
+                    totalReviews++
+                }
+
+                // Calculate the average rating for this service provider
+                averageRating = totalRating / totalReviews
+                val spRate = findViewById<TextView>(R.id.sp_rate)
+                val spReviews = findViewById<TextView>(R.id.sp_reviews)
+                spRate.text = averageRating.toString()
+                spReviews.text = totalReviews.toString() + " Reviews"
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+               //
+            }
+        })
 
     }
 
     private fun clickListeners() {
         spBook.setOnClickListener {
             val intent = Intent(this, BookNow::class.java)
+            intent.putExtra("RATING_VALUE", averageRating.toString())
+            intent.putExtra("NO_OF_REVIEWS", totalReviews.toString())
             startActivity(intent)
         }
         spCall.setOnClickListener {
