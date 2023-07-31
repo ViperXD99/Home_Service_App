@@ -1,6 +1,9 @@
 package lk.nibm.hireupapp.activities
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -31,11 +34,16 @@ class Home : AppCompatActivity() {
     private lateinit var appPreferences: AppPreferences
     private lateinit var database: FirebaseDatabase
     private lateinit var usersReference: DatabaseReference
+    private lateinit var dialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         appPreferences = AppPreferences(this)
         setContentView(binding.root)
+        dialog = Dialog(this)
+        dialog.setContentView(R.layout.loading_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
         checkSignedIn()
 
         fetchOrders()
@@ -67,6 +75,7 @@ class Home : AppCompatActivity() {
                             UserDataManager.setUser(it)
                             replaceFragment(HomeFragment())
                         }
+                        dialog.dismiss()
                     } else {
                         Toast.makeText(this@Home, "Failed to load Data!", Toast.LENGTH_SHORT).show()
                     }

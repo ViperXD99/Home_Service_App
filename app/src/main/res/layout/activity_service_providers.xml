@@ -31,7 +31,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBack"
                     android:layout_width="40dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:backgroundTint="@color/white"
                     android:padding="0dp"
                     app:icon="@drawable/ic_fluent_arrow_left_24_filled"
@@ -42,13 +42,13 @@
                     android:id="@+id/txtCategoryType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     />
             </LinearLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -63,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
                     android:hint="Search By Area"
                     android:inputType="textEmailAddress"
                     tools:ignore="HardcodedText,VisualLintTextFieldSize"

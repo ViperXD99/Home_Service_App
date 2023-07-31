@@ -8,13 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.squareup.picasso.Picasso
+//import com.squareup.picasso.Picasso
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.adapter.ChatAdapter
 import lk.nibm.hireupapp.model.Message
@@ -29,6 +30,7 @@ private lateinit var messageRecyclerView: RecyclerView
     private lateinit var mDbRef: DatabaseReference
     private lateinit var serviceProviderName : TextView
     private lateinit var providerProfilePhoto : ImageView
+    private lateinit var backButton : ImageView
 
     var receiveRoom: String? = null
     var senderRoom: String? = null
@@ -36,7 +38,7 @@ private lateinit var messageRecyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-
+        backButton = findViewById(R.id.backButton)
         serviceProviderName = findViewById(R.id.serviceProviderName)
         providerProfilePhoto = findViewById(R.id.recImage)
 
@@ -45,9 +47,11 @@ private lateinit var messageRecyclerView: RecyclerView
         val providerPhoto = intent.getStringExtra("providerPhoto")
 
         serviceProviderName.text = providerName
-
+        Glide.with(this)
+            .load(providerPhoto)
+            .into(providerProfilePhoto)
         // Load the profile photo of the service provider
-        Picasso.get().load(providerPhoto).into(providerProfilePhoto)
+     //   Picasso.get().load(providerPhoto).into(providerProfilePhoto)
         //providerPhoto?.let { providerProfilePhoto.setImageResource(it.toInt()) }
 
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
@@ -94,6 +98,9 @@ private lateinit var messageRecyclerView: RecyclerView
             }
 
             messageBox.setText("")
+        }
+        backButton.setOnClickListener {
+            onBackPressed()
         }
 
     }
