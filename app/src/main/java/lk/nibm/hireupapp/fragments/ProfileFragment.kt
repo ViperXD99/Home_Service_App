@@ -46,6 +46,10 @@ class ProfileFragment : Fragment() {
         loadProfileData()
         return view
     }
+    override fun onResume() {
+        super.onResume()
+        loadProfileData()
+    }
 
     private fun loadProfileData() {
         val profileData = UserDataManager.getUser()
