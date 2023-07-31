@@ -7,10 +7,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.common.AppPreferences
+import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.databinding.ActivityHomeBinding
 import lk.nibm.hireupapp.fragments.BookingFragment
 import lk.nibm.hireupapp.fragments.ChatSpFragment
@@ -18,6 +20,7 @@ import lk.nibm.hireupapp.fragments.HomeFragment
 import lk.nibm.hireupapp.fragments.OrdersFragment
 import lk.nibm.hireupapp.fragments.ProfileFragment
 import lk.nibm.hireupapp.model.Order
+import lk.nibm.hireupapp.model.User
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,15 +28,16 @@ import java.util.Locale
 
 class Home : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding
-    private val orderList = mutableListOf<Order>()
     private lateinit var appPreferences: AppPreferences
+    private lateinit var database: FirebaseDatabase
+    private lateinit var usersReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         appPreferences = AppPreferences(this)
         setContentView(binding.root)
         checkSignedIn()
-        replaceFragment(HomeFragment())
+
         fetchOrders()
 
         binding.bottomNavigationView.setOnItemSelectedListener {
@@ -52,8 +56,30 @@ class Home : AppCompatActivity() {
         if (appPreferences.isUserLoggedIn()) {
             // User is already signed in, continue with the home screen logic
             // Retrieve the user ID or token if needed
-            val userId = appPreferences.getUserId()
+            val userId = appPreferences.getUserId().toString()
+            database = FirebaseDatabase.getInstance()
+            usersReference = database.reference.child("Users").child(userId)
+            usersReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        val user = dataSnapshot.getValue(User::class.java)
+                        user?.let {
+                            UserDataManager.setUser(it)
+                            replaceFragment(HomeFragment())
+                        }
+                    } else {
+                        Toast.makeText(this@Home, "Failed to load Data!", Toast.LENGTH_SHORT).show()
+                    }
+                }
 
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Toast.makeText(
+                        this@Home,
+                        "Failed to retrieve user data: ${databaseError.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
             // Your home screen logic here
         } else {
             // User is not signed in, redirect to the sign-in screen
