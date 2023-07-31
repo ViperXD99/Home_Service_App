@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ShopHome"
-    android:background="@color/background">
-
+    android:background="@color/background"
+    >
     <RelativeLayout
         android:id="@+id/topRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+
+        >
 
         <ImageView
             android:id="@+id/backArrow"
@@ -19,18 +21,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="25dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/ic_fluent_arrow_left_24_filled"
             />
         <TextView
             android:id="@+id/hardware"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/hardware"
             android:textSize="16sp"
             android:textColor="@color/black"
+            android:text="Hardware"
+            android:textSize="24dp"
             android:textStyle="bold"
             android:layout_toEndOf="@id/backArrow"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="10dp"
             />
 
@@ -60,44 +68,47 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
+
+
 
             <RelativeLayout
                 android:id="@+id/categoryRelativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/topRelativeLayout"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/layout_border"
-                tools:ignore="ObsoleteLayoutParam">
+
+                >
 
                 <TextView
                     android:id="@+id/categoryTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/categories"
-                    android:textSize="16sp"
+                    android:text="Category"
+                    android:textSize="18dp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
                     />
 
                 <TextView
-                    android:id="@+id/categorySeeAll"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/hardwareCategorySeeAll"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="220dp"
+                    android:layout_marginStart="115dp"
                     android:layout_marginTop="10dp"
                     android:layout_toEndOf="@id/categoryTitle"
-                    android:text="@string/see_all"
+                    android:text="See All"
                     android:textColor="@color/light_blue"
-                    android:textSize="16sp" />
+                    android:textSize="18dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/categoryRecyclerView"
+                    android:id="@+id/hardwareCategoryRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/categoryTitle"
@@ -113,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/categoryRelativeLayout"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/layout_border"
@@ -127,16 +138,15 @@
                     android:text="Top Rated Hardware Stores"
                     android:textSize="16dp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
                     />
 
                 <TextView
                     android:id="@+id/hardwareSeeAll"
-                    android:layout_width="84dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="98dp"
+                    android:layout_marginStart="52dp"
                     android:layout_marginTop="10dp"
                     android:layout_toEndOf="@id/hardwareTitle"
                     android:text="See All"
@@ -165,6 +175,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/layout_border"
+
                 >
 
                 <TextView
@@ -174,7 +185,6 @@
                     android:text="Recommended For You"
                     android:textSize="16dp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
                     />

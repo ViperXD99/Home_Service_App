@@ -14,7 +14,7 @@ import lk.nibm.hireupapp.common.CategoryDataManager
 import lk.nibm.hireupapp.common.ServiceProviderDataManager
 import lk.nibm.hireupapp.model.ServiceProviders
 
-class ServiceProviderAdapter (private val itemList: List<ServiceProviders>) : RecyclerView.Adapter<ServiceProviderAdapter.ViewHolder>() {
+class ServiceProviderAdapter (private var itemList: List<ServiceProviders>) : RecyclerView.Adapter<ServiceProviderAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name : TextView
         private var category : TextView
@@ -61,6 +61,7 @@ class ServiceProviderAdapter (private val itemList: List<ServiceProviders>) : Re
     }
 
     override fun onBindViewHolder(holder: ServiceProviderAdapter.ViewHolder, position: Int) {
+//        var item = itemList[position]
         var item = itemList[position]
         holder.cardView.setOnClickListener {
             ServiceProviderDataManager.setProvider(item)
@@ -72,5 +73,10 @@ class ServiceProviderAdapter (private val itemList: List<ServiceProviders>) : Re
 
     override fun getItemCount(): Int {
         return itemList.size
+    }
+
+    fun searchByName(searchList: List<ServiceProviders>){
+        itemList = searchList   //change the list val to var
+        notifyDataSetChanged()
     }
 }
