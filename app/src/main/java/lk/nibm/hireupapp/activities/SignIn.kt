@@ -1,8 +1,11 @@
 package lk.nibm.hireupapp.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -18,6 +21,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
+import lk.nibm.hireupapp.common.AppPreferences
 import lk.nibm.hireupapp.model.User
 import lk.nibm.hireupapp.common.UserDataManager
 
@@ -33,6 +37,7 @@ class SignIn : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var usersReference: DatabaseReference
     private lateinit var txtSignUp: TextView
+    private lateinit var appPreferences: AppPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +46,7 @@ class SignIn : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         usersReference = database.reference.child("Users")
+        appPreferences = AppPreferences(this)
         initializeComponents()
         clickListeners()
     }
@@ -54,9 +60,40 @@ class SignIn : AppCompatActivity() {
             startActivity(intent)
         }
         btnNormalSignIn.setOnClickListener {
-            normalSignIn()
+            if (isValidated()){
+                normalSignIn()
+            }
+            closeKeyboard(txtPassword)
         }
 
+    }
+
+    private fun isValidated() : Boolean{
+        val email = txtEmail.text.toString().trim()
+        val password = txtPassword.text.toString().trim()
+        if (email.isEmpty()) {
+            txtEmail.error = "Please enter your email address"
+            txtEmail.requestFocus()
+            return false
+        } else if (!isValidEmail(email)) {
+            txtEmail.error = "Please enter a valid email address"
+            txtEmail.requestFocus()
+            return false
+        }
+        if (password.isEmpty()) {
+            txtPassword.error = "Please enter your password"
+            txtPassword.requestFocus()
+            return false
+        }
+        return true
+    }
+    private fun isValidEmail(email: String): Boolean {
+        val emailRegex = Regex("^\\w+([.-]?\\w+)*@gmail\\.com$")
+        return email.matches(emailRegex)
+    }
+    private fun closeKeyboard(view: View){
+        val imm : InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken,0)
     }
 
     private fun normalSignIn() {
@@ -101,8 +138,10 @@ class SignIn : AppCompatActivity() {
                     user?.let {
                         UserDataManager.setUser(it)
                     }
+                    appPreferences.saveUserLoggedIn(true, userId)
                     val intent = Intent(this@SignIn , Home::class.java)
                     startActivity(intent)
+                    finish()
 
                 } else {
                     Toast.makeText(this@SignIn, "Sign In Failed!", Toast.LENGTH_SHORT).show()
@@ -173,8 +212,10 @@ class SignIn : AppCompatActivity() {
                     user?.let {
                         UserDataManager.setUser(it)
                     }
+                    appPreferences.saveUserLoggedIn(true, userId)
                     val intent = Intent(this@SignIn , Home::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     // User does not exist in the Realtime Database
                     // Save user details to the database

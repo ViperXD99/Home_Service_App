@@ -2,11 +2,13 @@ package lk.nibm.hireupapp.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -26,6 +28,7 @@ class ServiceProviders : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private val itemList = mutableListOf<ServiceProviders>()
     private lateinit var id : String
+    private lateinit var btnBack : MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +36,15 @@ class ServiceProviders : AppCompatActivity() {
         initializeComponents()
         loadCategory()
         loadSPRecyclerView()
+        clickListeners()
     }
+
+    private fun clickListeners() {
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
     private fun loadSPRecyclerView() {
         serviceProviders = findViewById(R.id.ServiceProvidersRecyclerView)
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -73,5 +84,6 @@ class ServiceProviders : AppCompatActivity() {
 
     private fun initializeComponents() {
         txtCategoryType = findViewById(R.id.txtCategoryType)
+        btnBack = findViewById(R.id.btnBack)
     }
 }

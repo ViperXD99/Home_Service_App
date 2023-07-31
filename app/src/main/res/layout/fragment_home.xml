@@ -80,74 +80,103 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp">
-            <LinearLayout
+            android:layout_marginTop="15dp">
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="200dp"
                 android:layout_marginStart="10dp"
-                android:padding="10dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service Categories"
-                    android:layout_gravity="start"
-                    android:textStyle="bold"/>
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:id="@+id/seeAllCategories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textStyle="bold"
-                    android:layout_gravity="end"
-                    android:gravity="end|center"
-                    android:textAlignment="gravity"
-                    />
-            </LinearLayout>
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:paddingTop="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Service Categories"
+                            android:layout_gravity="start"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/seeAllCategories"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="See All"
+                            android:textStyle="bold"
+                            android:layout_gravity="end"
+                            android:gravity="end|center"
+                            android:textAlignment="gravity"
+                            />
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/categoryRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="170dp"
+                        tools:listitem="@layout/home_service_categories"/>
+                </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categoryRecyclerView"
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                tools:listitem="@layout/home_service_categories"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="220dp"
                 android:layout_marginStart="10dp"
-                android:padding="10dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Top Rated Service Providers"
-                    android:layout_gravity="start"
-                    android:textStyle="bold"/>
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textStyle="bold"
-                    android:layout_gravity="end"
-                    android:gravity="end|center"
-                    android:textAlignment="gravity"
-                    />
-            </LinearLayout>
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:paddingTop="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Top Rated Service Providers"
+                            android:layout_gravity="start"
+                            android:textStyle="bold"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See All"
+                            android:textStyle="bold"
+                            android:layout_gravity="end"
+                            android:gravity="end|center"
+                            android:textAlignment="gravity"
+                            />
+                    </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/topRatedRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                tools:listitem="@layout/top_rated_service_provider_card"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/topRatedRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:paddingTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:paddingBottom="10dp"
+                        tools:listitem="@layout/top_rated_service_provider_card"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"

@@ -3,8 +3,10 @@ package lk.nibm.hireupapp.activities
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -20,11 +22,19 @@ class ServiceCategories : AppCompatActivity() {
     private var layoutManager : RecyclerView.LayoutManager? = null
     private lateinit var databaseReference: DatabaseReference
     private val itemList = mutableListOf<Category>()
+    private lateinit var btnBack : MaterialButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service_categories)
         initializeComponents()
         loadServiceCategories()
+        clickListeners()
+    }
+
+    private fun clickListeners() {
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun loadServiceCategories() {
@@ -50,5 +60,6 @@ class ServiceCategories : AppCompatActivity() {
 
     private fun initializeComponents() {
         categories = findViewById(R.id.categories)
+        btnBack = findViewById(R.id.btnBack)
     }
 }

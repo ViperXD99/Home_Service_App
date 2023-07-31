@@ -117,8 +117,7 @@ class BookNow : AppCompatActivity() {
             showDatePicker()
         }
         btnBack.setOnClickListener {
-            val intent = Intent(this, SP_details::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
         spCall.setOnClickListener {
             val providerData = ServiceProviderDataManager.getProvider()

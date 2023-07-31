@@ -1,5 +1,6 @@
 package lk.nibm.hireupapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
+import lk.nibm.hireupapp.common.AppPreferences
 import lk.nibm.hireupapp.databinding.ActivityHomeBinding
 import lk.nibm.hireupapp.fragments.BookingFragment
 import lk.nibm.hireupapp.fragments.ChatSpFragment
@@ -24,13 +26,14 @@ import java.util.Locale
 class Home : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding
     private val orderList = mutableListOf<Order>()
-
+    private lateinit var appPreferences: AppPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
+        appPreferences = AppPreferences(this)
         setContentView(binding.root)
+        checkSignedIn()
         replaceFragment(HomeFragment())
-        initializeComponents()
         fetchOrders()
 
         binding.bottomNavigationView.setOnItemSelectedListener {
@@ -42,6 +45,21 @@ class Home : AppCompatActivity() {
                 R.id.chats_btn -> replaceFragment(ChatSpFragment())
             }
             true
+        }
+    }
+
+    private fun checkSignedIn() {
+        if (appPreferences.isUserLoggedIn()) {
+            // User is already signed in, continue with the home screen logic
+            // Retrieve the user ID or token if needed
+            val userId = appPreferences.getUserId()
+
+            // Your home screen logic here
+        } else {
+            // User is not signed in, redirect to the sign-in screen
+            val intent = Intent(this, SignIn::class.java)
+            startActivity(intent)
+            finish() // Optional: Finish the home activity to prevent the user from going back
         }
     }
 
@@ -76,14 +94,6 @@ class Home : AppCompatActivity() {
                 // Handle database error if any
             }
         })
-    }
-
-    private fun updateOrders(orderList: MutableList<Order>) {
-        TODO("Not yet implemented")
-    }
-
-    private fun initializeComponents() {
-
     }
     private fun replaceFragment(fragment: Fragment){
         val fragmentManager = supportFragmentManager

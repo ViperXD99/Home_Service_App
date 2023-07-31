@@ -29,12 +29,13 @@
                 android:layout_marginStart="10dp">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBack"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:padding="0dp"
                     app:icon="@drawable/ic_fluent_arrow_left_24_filled"
-                    app:iconSize="30dp"
+                    app:iconSize="24dp"
                     app:iconTint="@color/primary_color"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                 <TextView
