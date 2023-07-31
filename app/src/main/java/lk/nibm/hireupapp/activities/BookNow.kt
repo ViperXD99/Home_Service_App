@@ -62,6 +62,7 @@ class BookNow : AppCompatActivity() {
     private lateinit var txtAddressCity: TextView
     private lateinit var txtAddressDistrict: TextView
     private val addressList = mutableListOf<AddressDataClass>()
+    private lateinit var txtRate : TextView
     private var addressID: String? = null
     private lateinit var orderData: Order
 
@@ -240,6 +241,7 @@ class BookNow : AppCompatActivity() {
         spAddress.text = providerData?.address
         spCity.text = providerData?.city
         spDistrict.text = providerData?.district
+        txtRate.text = providerData?.price
         Glide.with(this)
             .load(providerData?.photoURL)
             .into(spProPic)
@@ -263,5 +265,6 @@ class BookNow : AppCompatActivity() {
         txtAddress = findViewById(R.id.address_txt)
         txtAddressContact = findViewById(R.id.tel_number_txt)
         txtAddressDistrict = findViewById(R.id.txtDistrict)
+        txtRate = findViewById(R.id.txtRate)
     }
 }

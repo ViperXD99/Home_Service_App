@@ -481,6 +481,7 @@ class OrderAdapter(
                 val txtCompletedCityView = view.findViewById<TextView>(R.id.txtCompletedCityView)
                 val txtCompletedDistrictView = view.findViewById<TextView>(R.id.txtCompletedDistrictView)
                 val txtCompletedDescription = view.findViewById<TextView>(R.id.txtCompletedDescription)
+                val txtPayment = view.findViewById<TextView>(R.id.txtPayment)
                 val btnAddReview = view.findViewById<Button>(R.id.btnAddReview)
                 val btnClose = view.findViewById<Button>(R.id.btnClose)
                 val spCompletedProfileImage = view.findViewById<ImageView>(R.id.spCompletedProfileImage)
@@ -493,6 +494,7 @@ class OrderAdapter(
                 txtCompletedStartingFrom.text = provider.price
                 txtCompletedBookingDate.text = order.bookingDate
                 txtCompletedDescription.text = order.description
+                txtPayment.text = provider.price
                 Glide.with(view)
                     .load(provider.photoURL)
                     .into(spCompletedProfileImage)

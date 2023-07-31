@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,7 @@ class ChatSpFragment : Fragment() {
     private var chatSpList = mutableListOf<ChatSp>()
     private var serviceNameList = mutableListOf<String>()
     private var serviceProviderList = mutableListOf<ServiceProviders>()
+    private lateinit var backButton : ImageView
     //private var userList = mutableListOf<User>()
 
 
@@ -46,6 +48,10 @@ class ChatSpFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_chat, container, false)
+        backButton = view.findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
         initializeRecyclerView()
         return view
     }
