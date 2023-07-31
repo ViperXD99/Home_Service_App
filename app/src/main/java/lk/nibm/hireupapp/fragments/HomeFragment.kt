@@ -91,9 +91,26 @@ class HomeFragment : Fragment() {
                     val imageUrl = serviceProviderSnapshot.child("photoURL").value.toString()
 
                     // Fetch all orders related to this service provider
+                    val categoryRef = database.reference.child("Service Categories").child(serviceType)
                     val ratingRef = database.reference.child("RatingAndReviews")
-                    val serviceProviderRatingRef =
-                        ratingRef.orderByChild("providerID").equalTo(serviceProviderId)
+                    val serviceProviderRatingRef = ratingRef.orderByChild("providerID").equalTo(serviceProviderId)
+                    var serviceName : String? = null
+
+
+                    categoryRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(ordersSnapshot: DataSnapshot) {
+                            if( ordersSnapshot.exists()) {
+                                // Fetch the rating from the order node
+                                serviceName = ordersSnapshot.child("name").getValue(String()::class.java)
+                            }
+
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            // Handle any database read errors here
+                        }
+                    })
+
 
                     serviceProviderRatingRef.addListenerForSingleValueEvent(object :
                         ValueEventListener {
@@ -115,8 +132,8 @@ class HomeFragment : Fragment() {
 
                             val serviceProvider = TopRatedSP(
                                 spName = serviceProviderName,
-                                spID = serviceProviderName,
-                                spCategory = serviceType,
+                                spID = serviceProviderId,
+                                spCategory = serviceName,
                                 spCategoryID = serviceType,
                                 spImageURL = imageUrl,
                                 ratingValue = averageRating,
