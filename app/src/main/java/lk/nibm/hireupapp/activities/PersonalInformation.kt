@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.databinding.ActivityPersonalInformationBinding
+import lk.nibm.hireupapp.model.User
 
 class PersonalInformation : AppCompatActivity() {
 
@@ -63,6 +64,8 @@ class PersonalInformation : AppCompatActivity() {
             usersReference.child("email").setValue(displayEmail)
             usersReference.child("gender").setValue(displayGender)
                 .addOnSuccessListener{
+                    val updatedUser = User(user?.userId, displayName,displayEmail,user?.photoUrl,displayContact,displayGender,user?.password)
+                    UserDataManager.setUser(updatedUser)
                     Toast.makeText(this, "Profile updated successfully!", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener{
                     Toast.makeText(this, "Profile update failed!", Toast.LENGTH_SHORT).show()

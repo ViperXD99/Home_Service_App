@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.adapter.OrderAdapter
+import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.model.Category
 import lk.nibm.hireupapp.model.Order
 import lk.nibm.hireupapp.model.ServiceProviders
@@ -52,14 +54,15 @@ class BookingFragment : Fragment() {
         serviceProviderRecyclerView.layoutManager = layoutManager
         adapter = OrderAdapter(orderList, serviceNameList, providerList)
         serviceProviderRecyclerView.adapter = adapter
-
+        val userID = UserDataManager.getUser()
         val database = FirebaseDatabase.getInstance()
         val ordersRef = database.getReference("Orders")
         val serviceCategoriesRef = database.getReference("Service Categories")
         val serviceProviderRef = database.getReference("Service_Providers")
+        val query: Query = ordersRef.orderByChild("customerID").equalTo(userID?.userId)
 
 
-        ordersRef.addValueEventListener(object : ValueEventListener {
+        query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 orderList.clear()
                 serviceNameList.clear()
