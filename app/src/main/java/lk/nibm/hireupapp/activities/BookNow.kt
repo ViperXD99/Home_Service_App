@@ -61,6 +61,8 @@ class BookNow : AppCompatActivity() {
     private lateinit var txtAddress: TextView
     private lateinit var txtAddressCity: TextView
     private lateinit var txtAddressDistrict: TextView
+    private lateinit var spRating : TextView
+    private lateinit var noOfReviews : TextView
     private val addressList = mutableListOf<AddressDataClass>()
     private lateinit var txtRate : TextView
     private var addressID: String? = null
@@ -245,6 +247,9 @@ class BookNow : AppCompatActivity() {
         Glide.with(this)
             .load(providerData?.photoURL)
             .into(spProPic)
+        val extras = intent.extras
+        spRating.text = extras?.getString("RATING_VALUE").toString()
+        noOfReviews.text = extras?.getString("NO_OF_REVIEWS").toString() + " Reviews"
 
     }
 
@@ -266,5 +271,7 @@ class BookNow : AppCompatActivity() {
         txtAddressContact = findViewById(R.id.tel_number_txt)
         txtAddressDistrict = findViewById(R.id.txtDistrict)
         txtRate = findViewById(R.id.txtRate)
+        spRating = findViewById(R.id.sp_rate)
+        noOfReviews = findViewById(R.id.sp_reviews)
     }
 }
