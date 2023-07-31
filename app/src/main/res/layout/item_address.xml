@@ -84,20 +84,21 @@
                 android:id="@+id/edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="4dp"
                 android:text="Edit"
                 android:textColor="@color/light_green"
                 android:textAlignment="textEnd"
                 android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/delete_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="58dp"
                 android:text="Delete"
-                android:textColor="@color/red"
-                android:layout_marginTop="60dp"
                 android:textAlignment="textEnd"
-                android:textSize="14sp"/>
+                android:textColor="@color/red"
+                android:textSize="14sp" />
 
 
         </LinearLayout>

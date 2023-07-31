@@ -26,6 +26,7 @@
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:backgroundTint="@color/primary_color"
             android:src="@drawable/ic_fluent_arrow_left_24_regular"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
@@ -75,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="4.8"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -92,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="54 Reviews"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
@@ -304,7 +305,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/bookings_available_from"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -314,7 +315,7 @@
                     android:layout_marginStart="10dp"
                     android:text="June 09, 2023"
                     android:textColor="@color/light_green"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 

@@ -32,6 +32,7 @@
                     android:id="@+id/btnBack"
                     android:layout_width="40dp"
                     android:layout_height="35dp"
+                    android:layout_marginStart="10dp"
                     android:backgroundTint="@color/white"
                     android:padding="0dp"
                     app:icon="@drawable/ic_fluent_arrow_left_24_filled"
@@ -61,7 +62,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:gravity="center_vertical"
                     android:hint="Search By Area"

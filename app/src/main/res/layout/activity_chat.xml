@@ -43,7 +43,7 @@
             android:layout_toEndOf="@id/recImage"
             android:text="@string/jenn_wilson"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             tools:ignore="TextSizeCheck" />
 
