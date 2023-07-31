@@ -34,7 +34,7 @@
             android:layout_toEndOf="@id/spImage"
             android:text="@string/jenn_wilson"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             tools:ignore="TextSizeCheck" />
 

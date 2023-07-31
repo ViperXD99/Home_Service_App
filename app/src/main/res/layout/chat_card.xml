@@ -11,7 +11,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/chat"
-            android:textSize="22sp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
             />
