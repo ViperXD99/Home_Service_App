@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.AllHardwares
+import lk.nibm.hireupapp.activities.InsideHardware
 import lk.nibm.hireupapp.activities.ServiceProviders
+import lk.nibm.hireupapp.activities.test
 import lk.nibm.hireupapp.model.Hardware
 
 class HardwareRecyclerViewAdapter(private val getActivity: AllHardwares, private val hardwareList: MutableList<Hardware>): RecyclerView.Adapter<HardwareRecyclerViewAdapter.ViewHolder>() {
@@ -25,14 +27,14 @@ class HardwareRecyclerViewAdapter(private val getActivity: AllHardwares, private
         }
 
 
-        val image : ImageView = itemView.findViewById(R.id.imgCategory)
-        val name : TextView = itemView.findViewById(R.id.txtCategoryName)
-        val cardView : CardView = itemView.findViewById(R.id.categoryCard)
+        val image : ImageView = itemView.findViewById(R.id.hardware_image)
+        val name : TextView = itemView.findViewById(R.id.hardware_name)
+        val cardView : CardView = itemView.findViewById(R.id.hardware_card)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_card_view, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_shop_home_hardwares, parent, false)
         return ViewHolder(view)
     }
 
@@ -44,9 +46,9 @@ class HardwareRecyclerViewAdapter(private val getActivity: AllHardwares, private
         val item = hardwareList[position]
         holder.cardView.setOnClickListener {
 //            Toast.makeText(getActivity, categoryList[position].name, Toast.LENGTH_SHORT).show()
-            val intent = Intent(getActivity, ServiceProviders::class.java)
-            intent.putExtra("CATEGORY_NAME", hardwareList[position].name)
-            intent.putExtra("CATEGORY_ID", hardwareList[position].id)
+            val intent = Intent(getActivity, InsideHardware::class.java)
+            intent.putExtra("HARDWARE_NAME", hardwareList[position].name)
+            intent.putExtra("HARDWARE_ID", hardwareList[position].id)
             getActivity.startActivity(intent)
         }
         holder.bind(item)

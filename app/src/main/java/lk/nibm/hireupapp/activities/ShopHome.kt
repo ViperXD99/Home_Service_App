@@ -14,21 +14,29 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.adapter.HardwareAdapter
+import lk.nibm.hireupapp.adapter.HardwareCategoriesAdapter
 import lk.nibm.hireupapp.model.Hardware
+import lk.nibm.hireupapp.model.HardwareCategoriesData
 
 class ShopHome : AppCompatActivity() {
     private lateinit var hardwarRecyclerView: RecyclerView
+    private lateinit var hardwarCategoryRecyclerView: RecyclerView
     private var layoutManager: RecyclerView.LayoutManager? = null
-    private lateinit var adapter: HardwareAdapter
-    private val itemList = mutableListOf<Hardware>()
+    private lateinit var HardwareAdapter: HardwareAdapter
+    private lateinit var HardwareCategoryAdapter: HardwareCategoriesAdapter
+    private val hardwareItemList = mutableListOf<Hardware>()
+    private val hardwareCategoryItemList = mutableListOf<HardwareCategoriesData>()
     private lateinit var databaseReference: DatabaseReference
     private lateinit var seeAllHardware: TextView
+    private lateinit var seeAllHardwareCategories: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_home)
         initializeComponents()
         hardwareRecyclerView()
+        hardwareCategoryRecyclerView()
         clickListeners()
     }
 
@@ -37,11 +45,17 @@ class ShopHome : AppCompatActivity() {
             val intent = Intent(this,AllHardwares::class.java)
             startActivity(intent)
         }
+        seeAllHardwareCategories.setOnClickListener {
+            val intent = Intent(this,HardwareCategories::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initializeComponents() {
 
         seeAllHardware = findViewById(R.id.hardwareSeeAll)
+        seeAllHardwareCategories = findViewById(R.id.hardwareCategorySeeAll)
+
     }
 
 
@@ -50,18 +64,44 @@ class ShopHome : AppCompatActivity() {
         hardwarRecyclerView = findViewById(R.id.hardwareRecyclerView)
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         hardwarRecyclerView.layoutManager = layoutManager
-        adapter = HardwareAdapter(itemList)
-        hardwarRecyclerView.adapter = adapter
+        HardwareAdapter = HardwareAdapter(hardwareItemList)
+        hardwarRecyclerView.adapter = HardwareAdapter
         databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("Hardware")
         databaseReference.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
-                itemList.clear()
+                hardwareItemList.clear()
                 for (itemSnapshot in snapshot.children) {
                     val item = itemSnapshot.getValue(Hardware::class.java)
-                    item?.let { itemList.add(it) }
+                    item?.let { hardwareItemList.add(it) }
                 }
-                adapter.notifyDataSetChanged()
+                HardwareAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle any errors that may occur while fetching data
+            }
+        })
+    }
+
+
+
+ private fun hardwareCategoryRecyclerView() {
+        hardwarCategoryRecyclerView = findViewById(R.id.hardwareCategoryRecyclerView)
+        layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        hardwarCategoryRecyclerView.layoutManager = layoutManager
+     HardwareCategoryAdapter = HardwareCategoriesAdapter(hardwareCategoryItemList)
+        hardwarCategoryRecyclerView.adapter = HardwareCategoryAdapter
+        databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("Category")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                hardwareCategoryItemList.clear()
+                for (itemSnapshot in snapshot.children) {
+                    val item = itemSnapshot.getValue(HardwareCategoriesData::class.java)
+                    item?.let { hardwareCategoryItemList.add(it) }
+                }
+                HardwareCategoryAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
