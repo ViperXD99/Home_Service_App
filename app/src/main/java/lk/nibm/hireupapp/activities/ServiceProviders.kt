@@ -3,6 +3,7 @@ package lk.nibm.hireupapp.activities
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageButton
+import androidx.appcompat.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ class ServiceProviders : AppCompatActivity() {
     private val itemList = mutableListOf<ServiceProviders>()
     private lateinit var id : String
     private lateinit var btnBack : MaterialButton
+    private lateinit var search : SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class ServiceProviders : AppCompatActivity() {
         loadCategory()
         loadSPRecyclerView()
         clickListeners()
+        searchSP()
     }
 
     private fun clickListeners() {
@@ -86,4 +89,31 @@ class ServiceProviders : AppCompatActivity() {
         txtCategoryType = findViewById(R.id.txtCategoryType)
         btnBack = findViewById(R.id.btnBack)
     }
+
+    private fun searchSP(){
+        search = findViewById(R.id.txtSearchByName)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchList(newText)
+                return true
+            }
+        })
+    }
+
+    fun searchList(text: String){
+        val searchList = ArrayList<ServiceProviders>()
+        for(dataClass in itemList){
+            if (dataClass.full_name?.lowercase()?.contains(text.lowercase()) == true){
+                searchList.add(dataClass)
+            }
+
+        }
+        adapter.searchByName(searchList)
+    }
+
+
 }
