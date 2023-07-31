@@ -1,7 +1,10 @@
 package lk.nibm.hireupapp.fragments
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,29 +32,37 @@ import java.util.Calendar
 
 
 class HomeFragment : Fragment() {
-    private lateinit var categoryRecyclerView : RecyclerView
-    private lateinit var topRatedRecyclerView : RecyclerView
-    private var layoutManager : RecyclerView.LayoutManager? = null
-    private lateinit var view : View
+    private lateinit var categoryRecyclerView: RecyclerView
+    private lateinit var topRatedRecyclerView: RecyclerView
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private lateinit var view: View
     private lateinit var adapter: CategoryAdapter
-    private lateinit var topAdapter : TopRatedAdapter
+    private lateinit var topAdapter: TopRatedAdapter
     private val itemList = mutableListOf<Category>()
     private val topSpList = mutableListOf<TopRatedSP>()
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var topRatedRef : DatabaseReference
-    private lateinit var serviceProviderRef : DatabaseReference
-    private lateinit var categoryRef : DatabaseReference
-    private lateinit var imgProfile : ImageView
-    private lateinit var loggedUserName : TextView
-    private lateinit var seeAllCategories : TextView
-    private lateinit var imgWelcome : ImageView
-    private lateinit var txtWelcome : TextView
+    private lateinit var topRatedRef: DatabaseReference
+    private lateinit var serviceProviderRef: DatabaseReference
+    private lateinit var categoryRef: DatabaseReference
+    private lateinit var imgProfile: ImageView
+    private lateinit var loggedUserName: TextView
+    private lateinit var seeAllCategories: TextView
+    private lateinit var imgWelcome: ImageView
+    private lateinit var txtWelcome: TextView
+    private lateinit var dialog: Dialog
+    private var isCategoryDataLoaded = false
+    private var isTopRatedDataLoaded = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         view = inflater.inflate(R.layout.fragment_home, container, false)
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.loading_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
         initializeComponents()
         categoryRecyclerView()
         loadProfileDetails()
@@ -74,7 +85,8 @@ class HomeFragment : Fragment() {
 
                 for (serviceProviderSnapshot in snapshot.children) {
                     val serviceProviderId = serviceProviderSnapshot.key.toString()
-                    val serviceProviderName = serviceProviderSnapshot.child("full_name").value.toString()
+                    val serviceProviderName =
+                        serviceProviderSnapshot.child("full_name").value.toString()
                     val serviceType = serviceProviderSnapshot.child("serviceId").value.toString()
                     val imageUrl = serviceProviderSnapshot.child("photoURL").value.toString()
 
@@ -100,14 +112,17 @@ class HomeFragment : Fragment() {
                     })
 
 
-                    serviceProviderRatingRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    serviceProviderRatingRef.addListenerForSingleValueEvent(object :
+                        ValueEventListener {
                         override fun onDataChange(ordersSnapshot: DataSnapshot) {
                             var totalRating = 0.0
                             var totalReviews = 0
 
                             for (orderSnapshot in ordersSnapshot.children) {
                                 // Fetch the rating from the order node
-                                val rating = orderSnapshot.child("ratingValue").getValue(Double::class.java) ?: 0.0
+                                val rating =
+                                    orderSnapshot.child("ratingValue").getValue(Double::class.java)
+                                        ?: 0.0
                                 totalRating += rating
                                 totalReviews++
                             }
@@ -125,17 +140,20 @@ class HomeFragment : Fragment() {
                                 ratingCount = totalReviews.toString()
 
 
-
                             )
 
                             topSpList.add(serviceProvider)
                             // Sort the list based on average rating in descending order
                             topSpList.sortBy { it.ratingValue }
                             topAdapter.notifyDataSetChanged()
+                            isTopRatedDataLoaded = true
+                            onDataLoaded()
                         }
 
                         override fun onCancelled(error: DatabaseError) {
                             // Handle any database read errors here
+                            isTopRatedDataLoaded = true
+                            onDataLoaded()
                         }
                     })
                 }
@@ -164,14 +182,13 @@ class HomeFragment : Fragment() {
 
     private fun loadProfileDetails() {
         val userdata = UserDataManager.getUser()
-        if (userdata != null){
+        if (userdata != null) {
             val imageUrl = userdata.photoUrl
             Glide.with(this)
                 .load(imageUrl)
                 .into(imgProfile)
             loggedUserName.text = userdata.displayName
-        }
-        else{
+        } else {
             Toast.makeText(requireContext(), "Sign In SuccessFul!", Toast.LENGTH_SHORT).show()
         }
         val calendar = Calendar.getInstance()
@@ -182,14 +199,17 @@ class HomeFragment : Fragment() {
                 imgWelcome.setImageResource(R.drawable.ic_fluent_weather_sunny_high_24_filled)
                 txtWelcome.text = "Good Morning!"
             }
+
             in 12..16 -> {
                 imgWelcome.setImageResource(R.drawable.ic_fluent_weather_sunny_24_filled)
                 txtWelcome.text = "Good Afternoon!"
             }
+
             in 17..20 -> {
                 imgWelcome.setImageResource(R.drawable.ic_fluent_weather_sunny_low_24_filled)
                 txtWelcome.text = "Good Evening!"
             }
+
             else -> {
                 imgWelcome.setImageResource(R.drawable.ic_fluent_weather_moon_24_filled)
                 txtWelcome.text = "Good Night!"
@@ -205,20 +225,32 @@ class HomeFragment : Fragment() {
         adapter = CategoryAdapter(itemList)
         categoryRecyclerView.adapter = adapter
         databaseReference = FirebaseDatabase.getInstance().reference.child("Service Categories")
-        databaseReference.addValueEventListener(object : ValueEventListener{
+        databaseReference.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
-               itemList.clear()
-                for (itemSnapshot in snapshot.children){
+                itemList.clear()
+                for (itemSnapshot in snapshot.children) {
                     val item = itemSnapshot.getValue(Category::class.java)
                     item?.let { itemList.add(it) }
                 }
                 adapter.notifyDataSetChanged()
+                isCategoryDataLoaded = true
+                onDataLoaded()
             }
+
             override fun onCancelled(error: DatabaseError) {
                 // Handle any errors that may occur while fetching data
+                isCategoryDataLoaded = true
+                onDataLoaded()
             }
         })
     }
 
+    private fun onDataLoaded() {
+        if (isCategoryDataLoaded && isTopRatedDataLoaded) {
+            dialog.dismiss() // Hide the progress dialog when all data is loaded
+
+
+        }
+    }
 }
