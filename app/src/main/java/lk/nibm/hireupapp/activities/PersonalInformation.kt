@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import lk.nibm.hireupapp.R
@@ -49,11 +50,24 @@ class PersonalInformation : AppCompatActivity() {
 
     private fun updateData() {
         binding.saveButton.setOnClickListener{
-            val displayName = fullName_edit_txt.toString().trim()
+            val displayName = fullName_edit_txt.text.toString().trim()
+            val displayContact = contact_edit_txt.text.toString().trim()
+            val displayEmail = email_edit_txt.text.toString().trim()
+            val displayGender = gender_edit_txt.text.toString().trim()
 
             val user = UserDataManager.getUser()
             database = FirebaseDatabase.getInstance()
             usersReference =database.reference.child("Users").child(user?.userId.toString())
+            usersReference.child("displayName").setValue(displayName)
+            usersReference.child("mobileNumber").setValue(displayContact)
+            usersReference.child("email").setValue(displayEmail)
+            usersReference.child("gender").setValue(displayGender)
+                .addOnSuccessListener{
+                    Toast.makeText(this, "Profile updated successfully!", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{
+                    Toast.makeText(this, "Profile update failed!", Toast.LENGTH_SHORT).show()
+                }
+
 
         }
     }
