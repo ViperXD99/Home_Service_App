@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.TopRatedServiceProviders">
+    tools:context=".activities.TopRatedServiceProviders"
+    android:background="@color/background">
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -48,7 +49,7 @@
         android:id="@+id/topRatedSPRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/top_rated_service_provider_card"
+        tools:listitem="@layout/top_rated_sp_card_2"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
 </LinearLayout>
