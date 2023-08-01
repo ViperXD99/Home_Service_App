@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.HardwareCategories
+import lk.nibm.hireupapp.activities.HardwareProducts
 import lk.nibm.hireupapp.activities.InsideHardware
 import lk.nibm.hireupapp.model.HardwareCategoriesData
 
@@ -48,18 +50,14 @@ class HardwareCategoriesRecyclerViewAdapter(
 
         // Register the click event for the card view
         holder.cardView.setOnClickListener {
-            val intent = Intent(getActivity, InsideHardware::class.java)
+
+
+
+            val intent = Intent(getActivity, HardwareProducts::class.java)
             intent.putExtra("HARDWARE_CATEGORY_NAME", hardwareCategoriesItemList[position].name)
             intent.putExtra("HARDWARE_CATEGORY_ID", hardwareCategoriesItemList[position].id)
             getActivity.startActivity(intent)
 
-            // Pass the click event to the handleCategoryClick function in InsideHardware
-            hardwareCategoriesItemList[position].name?.let { it1 ->
-                (getActivity as? InsideHardware)?.handleCategoryClick(
-                    it1,
-                    hardwareCategoriesItemList[position].id
-                )
-            }
         }
     }
 }
