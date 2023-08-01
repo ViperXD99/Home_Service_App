@@ -1,13 +1,17 @@
 package lk.nibm.hireupapp.activities
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -62,18 +66,58 @@ class BuyNow : AppCompatActivity() {
         userData = UserDataManager.getUser()!!
         database = FirebaseDatabase.getInstance()
         getUserAddress()
+        checkRadioButtons()
         getHardwareDetails()
         loadProductDetails()
         clickListeners()
     }
 
     private fun clickListeners() {
+
         binding.btnPlaceOrder.setOnClickListener {
             placeOrder()
+
         }
         binding.btnBack.setOnClickListener {
             onBackPressed()
         }
+
+        binding.changeAddressTextView.setOnClickListener {
+            showAddressSelectionDialog()
+        }
+    }
+
+    private fun showAddressSelectionDialog() {
+
+        val addressDialog = AlertDialog.Builder(this)
+            .setTitle("Select Address")
+            .setSingleChoiceItems(getAddressList(), -1) { dialog, which ->
+                val selectedAddress = addressList[which]
+                updateDisplayedAddress(selectedAddress)
+                dialog.dismiss()
+            }
+            .create()
+        addressDialog.show()
+    }
+
+
+
+    private fun getAddressList(): Array<String> {
+        // Create a list of address strings to be displayed in the dialog
+        val addressStrings = mutableListOf<String>()
+        for (address in addressList) {
+            addressStrings.add(address.fullName + ", " + address.address + ", " + address.city + ", " + address.province)
+        }
+        return addressStrings.toTypedArray()
+    }
+
+    private fun updateDisplayedAddress(selectedAddress: AddressDataClass) {
+        // Update the address displayed in the BuyNow activity with the selected address
+        binding.txtAddress.text = selectedAddress.address
+        binding.txtAddressCity.text = selectedAddress.city
+        binding.txtAddressDistrict.text = selectedAddress.province
+        binding.txtAddressName.text = selectedAddress.fullName
+        binding.txtAddressContact.text = selectedAddress.contactNumber
     }
 
     private fun placeOrder() {
@@ -162,6 +206,15 @@ class BuyNow : AppCompatActivity() {
         })
     }
 
+    private fun checkRadioButtons() {
+        binding.radioBtnCash.setOnClickListener {
+            binding.radioBtnCard.isChecked = false
+        }
+        binding.radioBtnCard.setOnClickListener {
+            binding.radioBtnCash.isChecked = false
+        }
+    }
+
     private fun getUserAddress() {
         userAddressRef = database.reference.child("Users").child(userData.userId!!).child("address")
         userAddressRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -173,7 +226,7 @@ class BuyNow : AppCompatActivity() {
                     }
                 }
                 if (addressList.isNotEmpty()) {
-                    val firstAddress = addressList[0]
+                    val firstAddress = addressList[1]
                     binding.txtAddress.text = firstAddress.address
                     binding.txtAddressCity.text = firstAddress.city
                     binding.txtAddressDistrict.text = firstAddress.province

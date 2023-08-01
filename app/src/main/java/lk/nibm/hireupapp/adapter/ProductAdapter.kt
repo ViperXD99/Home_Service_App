@@ -26,7 +26,7 @@ class ProductAdapter(private val productList: List<HardwareProductsData>) :Recyc
         var productCard : CardView
         var productImage : ImageView
         var productName : TextView
-        var hardwareName : TextView
+  //      var hardwareName : TextView
 //        var productPrice : TextView
 //        var productQuantity : TextView
 //        var productDescription : TextView
@@ -36,7 +36,7 @@ class ProductAdapter(private val productList: List<HardwareProductsData>) :Recyc
             productImage = productView.findViewById(R.id.product_image)
             productName = productView.findViewById(R.id.product_name)
             productCard = productView.findViewById(R.id.product_card)
-            hardwareName = productView.findViewById(R.id.hardware_address)
+  //          hardwareName = productView.findViewById(R.id.hardware_address_name)
 //            productPrice = productView.findViewById(R.id.productPrice)
 //            productQuantity = productView.findViewById(R.id.productQuantity)
 //            productDescription = productView.findViewById(R.id.productDescription)
@@ -45,7 +45,7 @@ class ProductAdapter(private val productList: List<HardwareProductsData>) :Recyc
         fun bind(product : HardwareProductsData){
             Glide.with(itemView).load(product.productImage).into(productImage)
             productName.text = product.name
-            hardwareName.text = "Rs. "+ product.price
+            //hardwareName.text = product.price
 
         }
 
