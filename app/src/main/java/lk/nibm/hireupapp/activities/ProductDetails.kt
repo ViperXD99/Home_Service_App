@@ -3,9 +3,13 @@ package lk.nibm.hireupapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import lk.nibm.hireupapp.common.HardwareProductsDataManager
 import lk.nibm.hireupapp.databinding.ActivityProductDetailsBinding
+import lk.nibm.hireupapp.model.CartItem
 import lk.nibm.hireupapp.model.HardwareProductsData
 
 class ProductDetails : AppCompatActivity() {
@@ -25,11 +29,38 @@ class ProductDetails : AppCompatActivity() {
         binding.buttonBuy.setOnClickListener {
             incrementSoldItemCountByOne()
         }
+
     }
 
     private fun clickListeners() {
         binding.btnBack.setOnClickListener {
             onBackPressed()
+        }
+        binding.buttonAddToCart.setOnClickListener {
+            updateCart()
+        }
+    }
+
+
+    private fun updateCart() {
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let { currentUser ->
+            val cartItem = productData.id?.let { productData.price?.let { it1 ->
+                CartItem(it,
+                    it1, currentQuantity)
+            } }
+            val databaseReference = FirebaseDatabase.getInstance().reference
+            databaseReference.child("Shop").child("Cart").child(currentUser.uid)
+                .push().setValue(cartItem)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Added to cart successfully!", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed to add to cart.", Toast.LENGTH_SHORT).show()
+                }
+        } ?: run {
+            // Handle the case when the user is not logged in
+            Toast.makeText(this, "Please log in to add to cart.", Toast.LENGTH_SHORT).show()
         }
     }
 
