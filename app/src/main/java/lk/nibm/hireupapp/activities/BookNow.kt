@@ -102,7 +102,6 @@ class BookNow : AppCompatActivity() {
                     txtAddressDistrict.text = firstAddress.province
                     txtAddressName.text = firstAddress.fullName
                     addressID = firstAddress.addressId
-
                 }
             }
 
