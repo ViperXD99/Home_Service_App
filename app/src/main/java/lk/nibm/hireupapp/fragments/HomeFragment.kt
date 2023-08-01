@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.ServiceCategories
 import lk.nibm.hireupapp.activities.ShopHome
+import lk.nibm.hireupapp.activities.TopRatedServiceProviders
 import lk.nibm.hireupapp.adapter.CategoryAdapter
 import lk.nibm.hireupapp.adapter.TopRatedAdapter
 import lk.nibm.hireupapp.common.UserDataManager
@@ -52,6 +53,7 @@ class HomeFragment : Fragment() {
     private lateinit var imgWelcome: ImageView
     private lateinit var txtWelcome: TextView
     private lateinit var shopHome: Button
+    private lateinit var btnTopSP : TextView
     private lateinit var dialog: Dialog
     private var isCategoryDataLoaded = false
     private var isTopRatedDataLoaded = false
@@ -178,6 +180,10 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), ShopHome::class.java)
             startActivity(intent)
         }
+        btnTopSP.setOnClickListener {
+            val intent = Intent(requireContext(), TopRatedServiceProviders::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initializeComponents() {
@@ -187,6 +193,7 @@ class HomeFragment : Fragment() {
         shopHome = view.findViewById(R.id.shopNowBtn)
         imgWelcome = view.findViewById(R.id.imgWelcome)
         txtWelcome = view.findViewById(R.id.txtWelcome)
+        btnTopSP = view.findViewById(R.id.btnTopSP)
     }
 
     private fun loadProfileDetails() {

@@ -1,6 +1,7 @@
 package lk.nibm.hireupapp.activities
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -68,6 +69,43 @@ class BuyNow : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             onBackPressed()
         }
+
+        binding.changeAddressTextView.setOnClickListener {
+            showAddressSelectionDialog()
+        }
+    }
+
+    private fun showAddressSelectionDialog() {
+
+        val addressDialog = AlertDialog.Builder(this)
+            .setTitle("Select Address")
+            .setSingleChoiceItems(getAddressList(), -1) { dialog, which ->
+                val selectedAddress = addressList[which]
+                updateDisplayedAddress(selectedAddress)
+                dialog.dismiss()
+            }
+            .create()
+        addressDialog.show()
+    }
+
+
+
+    private fun getAddressList(): Array<String> {
+        // Create a list of address strings to be displayed in the dialog
+        val addressStrings = mutableListOf<String>()
+        for (address in addressList) {
+            addressStrings.add(address.fullName + ", " + address.address + ", " + address.city + ", " + address.province)
+        }
+        return addressStrings.toTypedArray()
+    }
+
+    private fun updateDisplayedAddress(selectedAddress: AddressDataClass) {
+        // Update the address displayed in the BuyNow activity with the selected address
+        binding.txtAddress.text = selectedAddress.address
+        binding.txtAddressCity.text = selectedAddress.city
+        binding.txtAddressDistrict.text = selectedAddress.province
+        binding.txtAddressName.text = selectedAddress.fullName
+        binding.txtAddressContact.text = selectedAddress.contactNumber
     }
 
     private fun placeOrder() {
@@ -185,8 +223,6 @@ class BuyNow : AppCompatActivity() {
     private fun onDataLoaded() {
         if (isAddressDataLoaded && isHardwareDataLoaded && isProductDataLoaded) {
             dialog.dismiss() // Hide the progress dialog when all data is loaded
-
-
         }
     }
 }
