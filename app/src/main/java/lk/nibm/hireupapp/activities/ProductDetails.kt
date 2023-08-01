@@ -1,6 +1,7 @@
 package lk.nibm.hireupapp.activities
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -27,7 +28,8 @@ class ProductDetails : AppCompatActivity() {
         clickListeners()
 
         binding.buttonBuy.setOnClickListener {
-            incrementSoldItemCountByOne()
+            val intent = Intent(this , BuyNow::class.java)
+            startActivity(intent)
         }
 
     }
@@ -98,10 +100,6 @@ class ProductDetails : AppCompatActivity() {
             currentQuantity++
             updateQuantityText()
         }
-    }
-
-    private fun incrementSoldItemCountByOne() {
-
     }
 
     private fun updateQuantityText() {

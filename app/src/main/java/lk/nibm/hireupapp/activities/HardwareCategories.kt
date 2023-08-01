@@ -30,7 +30,7 @@ class HardwareCategories : AppCompatActivity() {
 
     private fun loadServiceCategories() {
         adapter = HardwareCategoriesRecyclerViewAdapter(this, itemList)
-        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this, 3)
+        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this, 2)
         hardwares.layoutManager = layoutManager
         hardwares.adapter = adapter
         databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("Category")

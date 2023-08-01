@@ -79,5 +79,6 @@
     <string name="visa_master">Visa/Master</string>
     <string name="top_rated_hardware_stores">Top Rated Hardware Stores</string>
     <string name="recommended_for_you">Recommended For You</string>
+    <string name="cash_on_delivery">Cash on Delivery</string>
 
 </resources>
