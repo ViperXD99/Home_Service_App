@@ -107,7 +107,7 @@ class ServiceProviders : AppCompatActivity() {
     fun searchList(text: String){
         val searchList = ArrayList<ServiceProviders>()
         for(dataClass in itemList){
-            if (dataClass.full_name?.lowercase()?.contains(text.lowercase()) == true){
+            if (dataClass.city?.lowercase()?.contains(text.lowercase()) == true || dataClass.district?.lowercase()?.contains(text.lowercase()) == true ){
                 searchList.add(dataClass)
             }
 

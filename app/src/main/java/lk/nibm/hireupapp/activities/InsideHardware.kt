@@ -4,19 +4,25 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.adapter.HardwareCategoriesNamesAdapter
 import lk.nibm.hireupapp.adapter.HardwareProductsAdapter
 import lk.nibm.hireupapp.common.HardwareCategoriesDataManager
 import lk.nibm.hireupapp.common.HardwareDataManager
+import lk.nibm.hireupapp.common.ShopDataManager
+import lk.nibm.hireupapp.databinding.ActivityInsideHardwareBinding
+import lk.nibm.hireupapp.model.Hardware
 import lk.nibm.hireupapp.model.HardwareCategoriesData
 import lk.nibm.hireupapp.model.HardwareProductsData
 
@@ -31,11 +37,15 @@ class InsideHardware : AppCompatActivity() {
     private val categoryNames = mutableListOf<HardwareCategoriesData>()
     private val HardwareProducts = mutableListOf<HardwareProductsData>()
     private lateinit var hardwareCategoryName :TextView
+    private lateinit var binding : ActivityInsideHardwareBinding
+    private  var shopDetails : Hardware? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inside_hardware)
-
+        binding = ActivityInsideHardwareBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        shopDetails = ShopDataManager.getShop()
         initializeComponents()
         loadTopScreen()
         loadHardwareCategoriesRecyclerView()
@@ -43,15 +53,11 @@ class InsideHardware : AppCompatActivity() {
     }
 
     private fun loadTopScreen() {
-        val extras = intent.extras
-        if (extras != null) {
-            hardwareCategoryName.text = extras.getString("HARDWARE_NAME")
-            id = extras.getString("HARDWARE_ID").toString()
-            HardwareDataManager.name = extras.getString("HARDWARE_NAME").toString()
-            HardwareDataManager.id = extras.getString("HARDWARE_ID").toString()
-            //HardwareCategoriesDataManager.name = extras.getString("HARDWARE_CATEGORY_NAME").toString()
-            //HardwareCategoriesDataManager.id = extras.getString("HARDWARE_CATEGORY_ID").toString()
-        }
+        binding.hardwaresName.text = shopDetails?.name
+        binding.hardwaresAddress.text = shopDetails?.address +"," + shopDetails?.city + "," + shopDetails?.district
+        Glide.with(this)
+            .load(shopDetails?.image)
+            .into(binding.imgShop)
     }
 
     private fun loadHardwareCategoriesRecyclerView() {
@@ -88,15 +94,17 @@ class InsideHardware : AppCompatActivity() {
         HardwareProductsAdapter = HardwareProductsAdapter(HardwareProducts)
         productsRecyclerView.adapter = HardwareProductsAdapter
         //databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("Category")
-        databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("Hardware").child(id).child("Product")
+        databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("item")
+        val query: Query = databaseReference.orderByChild("hardwareID").equalTo(shopDetails?.id.toString())
         //val query: Query = databaseReference.orderByChild("hardwareID").equalTo(id)
-        databaseReference.addValueEventListener(object : ValueEventListener {
+        query.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 HardwareProducts.clear()
                 for (itemSnapshot in snapshot.children) {
                     val item = itemSnapshot.getValue(HardwareProductsData::class.java)
                     item?.let { HardwareProducts.add(it) }
+                    HardwareProducts.size
                 }
                 HardwareProductsAdapter.notifyDataSetChanged()
             }
@@ -111,8 +119,6 @@ class InsideHardware : AppCompatActivity() {
         // You can access the categoryName and categoryId parameters
         // that were passed from the adapter's onClickListener
     }
-
-
 
 
     private fun initializeComponents() {

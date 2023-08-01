@@ -10,17 +10,17 @@
         android:id="@+id/hardware_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         app:cardElevation="0dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
+        android:layout_marginStart="10dp"
         tools:ignore="TextSizeCheck">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:paddingBottom="10dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
@@ -58,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="top"
+                android:maxLines="1"
                 android:layout_gravity="left"
                 android:text="Rs.1000.00"
                 android:textColor="@color/dark_gray"
