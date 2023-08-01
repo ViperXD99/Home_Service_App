@@ -64,6 +64,9 @@ class InsideHardware : AppCompatActivity() {
         binding.btnAll.setOnClickListener {
             HardwareProductsAdapter.setData(HardwareProducts)
         }
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun categoryClickListener() {

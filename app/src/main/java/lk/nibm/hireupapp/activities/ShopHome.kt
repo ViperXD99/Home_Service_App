@@ -3,6 +3,7 @@ package lk.nibm.hireupapp.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -35,6 +36,7 @@ class ShopHome : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var seeAllHardware: TextView
     private lateinit var seeAllHardwareCategories: TextView
+    private lateinit var backArrow :ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,13 +84,16 @@ class ShopHome : AppCompatActivity() {
             val intent = Intent(this,HardwareCategories::class.java)
             startActivity(intent)
         }
+        backArrow.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun initializeComponents() {
 
         seeAllHardware = findViewById(R.id.hardwareSeeAll)
         seeAllHardwareCategories = findViewById(R.id.hardwareCategorySeeAll)
-
+        backArrow = findViewById(R.id.backArrow)
     }
 
 
