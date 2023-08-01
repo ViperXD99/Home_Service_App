@@ -53,7 +53,7 @@ class ProductDetails : AppCompatActivity() {
             databaseReference.child("Shop").child("Cart").child(currentUser.uid)
                 .push().setValue(cartItem)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Added to cart successfully!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Added to cart successfuly!", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to add to cart.", Toast.LENGTH_SHORT).show()
