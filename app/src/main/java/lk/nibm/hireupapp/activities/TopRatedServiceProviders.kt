@@ -17,13 +17,14 @@ import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.adapter.CategoryRecyclerViewAdapter
 import lk.nibm.hireupapp.adapter.TopRatedAdapter
+import lk.nibm.hireupapp.adapter.TopRatedSPAdapter
 import lk.nibm.hireupapp.model.Category
 import lk.nibm.hireupapp.model.TopRatedSP
 
 class TopRatedServiceProviders : AppCompatActivity() {
     private var layoutManager : RecyclerView.LayoutManager? = null
     private val topSpList = mutableListOf<TopRatedSP>()
-    private lateinit var topAdapter: TopRatedAdapter
+    private lateinit var topAdapter: TopRatedSPAdapter
     private lateinit var topRatedRecyclerView: RecyclerView
     private lateinit var btnBack : MaterialButton
     private lateinit var serviceProviderRef: DatabaseReference
@@ -50,9 +51,9 @@ class TopRatedServiceProviders : AppCompatActivity() {
     private fun topRatedSPRecyclerView() {
         val database = FirebaseDatabase.getInstance()
         topRatedRecyclerView = findViewById(R.id.topRatedSPRecyclerView)
-        layoutManager = GridLayoutManager(this, 2)
+        layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         topRatedRecyclerView.layoutManager = layoutManager
-        topAdapter = TopRatedAdapter(topSpList)
+        topAdapter = TopRatedSPAdapter(topSpList)
         topRatedRecyclerView.adapter = topAdapter
         serviceProviderRef = database.reference.child("Service_Providers")
         serviceProviderRef.addValueEventListener(object : ValueEventListener {
@@ -65,7 +66,10 @@ class TopRatedServiceProviders : AppCompatActivity() {
                         serviceProviderSnapshot.child("full_name").value.toString()
                     val serviceType = serviceProviderSnapshot.child("serviceId").value.toString()
                     val imageUrl = serviceProviderSnapshot.child("photoURL").value.toString()
-
+                    val spAddress = serviceProviderSnapshot.child("address").value.toString()
+                    val spCity = serviceProviderSnapshot.child("city").value.toString()
+                    val spDistrict = serviceProviderSnapshot.child("district").value.toString()
+                    val spPrice = serviceProviderSnapshot.child("price").value.toString()
                     // Fetch all orders related to this service provider
                     val categoryRef = database.reference.child("Service Categories").child(serviceType)
                     val ratingRef = database.reference.child("RatingAndReviews")
@@ -111,6 +115,10 @@ class TopRatedServiceProviders : AppCompatActivity() {
                                 spID = serviceProviderId,
                                 spCategory = serviceName,
                                 spCategoryID = serviceType,
+                                spPrice = spPrice,
+                                spAddress = spAddress,
+                                spCity = spCity,
+                                spDistrict = spDistrict,
                                 spImageURL = imageUrl,
                                 ratingValue = averageRating,
                                 ratingCount = totalReviews.toString()

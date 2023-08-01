@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
     private lateinit var imgWelcome: ImageView
     private lateinit var txtWelcome: TextView
     private lateinit var shopHome: Button
-    private lateinit var btnTopSP : TextView
+    private lateinit var btnTopSP: TextView
     private lateinit var dialog: Dialog
     private var isCategoryDataLoaded = false
     private var isTopRatedDataLoaded = false
@@ -94,19 +94,25 @@ class HomeFragment : Fragment() {
                         serviceProviderSnapshot.child("full_name").value.toString()
                     val serviceType = serviceProviderSnapshot.child("serviceId").value.toString()
                     val imageUrl = serviceProviderSnapshot.child("photoURL").value.toString()
-
+                    val spAddress = serviceProviderSnapshot.child("address").value.toString()
+                    val spCity = serviceProviderSnapshot.child("city").value.toString()
+                    val spDistrict = serviceProviderSnapshot.child("district").value.toString()
+                    val spPrice = serviceProviderSnapshot.child("price").value.toString()
                     // Fetch all orders related to this service provider
-                    val categoryRef = database.reference.child("Service Categories").child(serviceType)
+                    val categoryRef =
+                        database.reference.child("Service Categories").child(serviceType)
                     val ratingRef = database.reference.child("RatingAndReviews")
-                    val serviceProviderRatingRef = ratingRef.orderByChild("providerID").equalTo(serviceProviderId)
-                    var serviceName : String? = null
+                    val serviceProviderRatingRef =
+                        ratingRef.orderByChild("providerID").equalTo(serviceProviderId)
+                    var serviceName: String? = null
 
 
                     categoryRef.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(ordersSnapshot: DataSnapshot) {
-                            if( ordersSnapshot.exists()) {
+                            if (ordersSnapshot.exists()) {
                                 // Fetch the rating from the order node
-                                serviceName = ordersSnapshot.child("name").getValue(String()::class.java)
+                                serviceName =
+                                    ordersSnapshot.child("name").getValue(String()::class.java)
                             }
 
                         }
@@ -140,6 +146,10 @@ class HomeFragment : Fragment() {
                                 spID = serviceProviderId,
                                 spCategory = serviceName,
                                 spCategoryID = serviceType,
+                                spPrice = spPrice,
+                                spAddress = spAddress,
+                                spCity = spCity,
+                                spDistrict = spDistrict,
                                 spImageURL = imageUrl,
                                 ratingValue = averageRating,
                                 ratingCount = totalReviews.toString()
