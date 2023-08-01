@@ -25,6 +25,7 @@ import lk.nibm.hireupapp.databinding.ActivityInsideHardwareBinding
 import lk.nibm.hireupapp.model.Hardware
 import lk.nibm.hireupapp.model.HardwareCategoriesData
 import lk.nibm.hireupapp.model.HardwareProductsData
+import lk.nibm.hireupapp.model.ServiceProviders
 
 class InsideHardware : AppCompatActivity() {
     private lateinit var categoriesRecyclerView: RecyclerView
@@ -47,9 +48,39 @@ class InsideHardware : AppCompatActivity() {
         setContentView(view)
         shopDetails = ShopDataManager.getShop()
         initializeComponents()
+        productsRecyclerView = findViewById(R.id.itemRecyclerView)
+        // layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        productsRecyclerView.layoutManager = GridLayoutManager(this,2)
+        HardwareProductsAdapter = HardwareProductsAdapter(HardwareProducts)
+        productsRecyclerView.adapter = HardwareProductsAdapter
         loadTopScreen()
+        clickListeners()
         loadHardwareCategoriesRecyclerView()
         loadHardwareProductsRecyclerView()
+
+    }
+
+    private fun clickListeners() {
+        binding.btnAll.setOnClickListener {
+            HardwareProductsAdapter.setData(HardwareProducts)
+        }
+    }
+
+    private fun categoryClickListener() {
+        HardwareCategoriesNamesAdapter.setOnItemClickListener(object : HardwareCategoriesNamesAdapter.OnItemClickListener {
+            override fun onCategoryClick(category: HardwareCategoriesData) {
+                val productList = ArrayList<HardwareProductsData>()
+//                Toast.makeText(this@InsideHardware, category.id, Toast.LENGTH_SHORT).show()
+//                val filteredProducts = HardwareProducts.filter { it.categoryID == category.id }
+//                HardwareProductsAdapter.setData(filteredProducts)
+                for (dataClass in HardwareProducts){
+                    if (dataClass.categoryID == category.id){
+                        productList.add(dataClass)
+                    }
+                }
+                HardwareProductsAdapter.setData(productList)
+            }
+        })
     }
 
     private fun loadTopScreen() {
@@ -88,11 +119,7 @@ class InsideHardware : AppCompatActivity() {
 
     private fun loadHardwareProductsRecyclerView() {
 
-        productsRecyclerView = findViewById(R.id.itemRecyclerView)
-        // layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        productsRecyclerView.layoutManager = GridLayoutManager(this,2)
-        HardwareProductsAdapter = HardwareProductsAdapter(HardwareProducts)
-        productsRecyclerView.adapter = HardwareProductsAdapter
+
         //databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("Category")
         databaseReference = FirebaseDatabase.getInstance().reference.child("Shop").child("item")
         val query: Query = databaseReference.orderByChild("hardwareID").equalTo(shopDetails?.id.toString())
@@ -107,6 +134,7 @@ class InsideHardware : AppCompatActivity() {
                     HardwareProducts.size
                 }
                 HardwareProductsAdapter.notifyDataSetChanged()
+                categoryClickListener()
             }
 
             override fun onCancelled(error: DatabaseError) {
