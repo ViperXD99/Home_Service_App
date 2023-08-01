@@ -7,20 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProductDetails">
 
-    <ImageView
-        android:id="@+id/product_image"
-        android:layout_width="match_parent"
-        android:layout_height="234dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:scaleType="fitXY"/>
-
-
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_fluent_arrow_left_24_filled"
+            android:backgroundTint="@color/white"
+            tools:ignore="ContentDescription"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"/>
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/top_rounded_corners"
+        android:translationY="-20dp"
+        android:backgroundTint="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -252,5 +268,7 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </RelativeLayout>
+
+
 </LinearLayout>

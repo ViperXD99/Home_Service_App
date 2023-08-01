@@ -14,6 +14,7 @@ import lk.nibm.hireupapp.activities.AllHardwares
 import lk.nibm.hireupapp.activities.InsideHardware
 import lk.nibm.hireupapp.activities.ServiceProviders
 import lk.nibm.hireupapp.activities.test
+import lk.nibm.hireupapp.common.ShopDataManager
 import lk.nibm.hireupapp.model.Hardware
 
 class HardwareRecyclerViewAdapter(private val getActivity: AllHardwares, private val hardwareList: MutableList<Hardware>): RecyclerView.Adapter<HardwareRecyclerViewAdapter.ViewHolder>() {
@@ -46,10 +47,9 @@ class HardwareRecyclerViewAdapter(private val getActivity: AllHardwares, private
         val item = hardwareList[position]
         holder.cardView.setOnClickListener {
 //            Toast.makeText(getActivity, categoryList[position].name, Toast.LENGTH_SHORT).show()
-            val intent = Intent(getActivity, InsideHardware::class.java)
-            intent.putExtra("HARDWARE_NAME", hardwareList[position].name)
-            intent.putExtra("HARDWARE_ID", hardwareList[position].id)
-            getActivity.startActivity(intent)
+            ShopDataManager.setShop(item)
+            val intent = Intent(holder.itemView.context, InsideHardware::class.java)
+            holder.itemView.context.startActivity(intent)
         }
         holder.bind(item)
     }

@@ -13,11 +13,12 @@ import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.common.HardwareProductsDataManager
 import lk.nibm.hireupapp.model.HardwareProductsData
 
-class HardwareProductsAdapter (private val productData: List<HardwareProductsData>) : RecyclerView.Adapter<HardwareProductsAdapter.ViewHolder>() {
+class HardwareProductsAdapter(private val productData: List<HardwareProductsData>) :
+    RecyclerView.Adapter<HardwareProductsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var name : TextView
-        private var image : ImageView
-        val cardView : CardView = itemView.findViewById(R.id.product_card)
+        var name: TextView
+        private var image: ImageView
+        val cardView: CardView = itemView.findViewById(R.id.product_card)
 
         init {
             name = itemView.findViewById(R.id.product_name)
@@ -25,10 +26,11 @@ class HardwareProductsAdapter (private val productData: List<HardwareProductsDat
 
 
         }
+
         fun bind(item: HardwareProductsData) {
             name.text = item.name
             Glide.with(itemView)
-                .load(item.image)
+                .load(item.productImage)
                 .into(image)
         }
 
@@ -48,7 +50,10 @@ class HardwareProductsAdapter (private val productData: List<HardwareProductsDat
         var item = productData[position]
         holder.cardView.setOnClickListener {
             HardwareProductsDataManager.setHardwareProduct(item)
-            val intent = Intent(holder.itemView.context, lk.nibm.hireupapp.activities.ProductDetails::class.java)
+            val intent = Intent(
+                holder.itemView.context,
+                lk.nibm.hireupapp.activities.ProductDetails::class.java
+            )
             holder.itemView.context.startActivity(intent)
         }
         holder.bind(item)
