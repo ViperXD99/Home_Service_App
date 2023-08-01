@@ -4,14 +4,24 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import lk.nibm.hireupapp.R
-import lk.nibm.hireupapp.common.HardwareCategoriesDataManager
 import lk.nibm.hireupapp.model.HardwareCategoriesData
 
 class HardwareCategoriesNamesAdapter(private val categoryNames: List<HardwareCategoriesData>) : RecyclerView.Adapter<HardwareCategoriesNamesAdapter.ViewHolder>() {
+    private val categories : MutableList<HardwareCategoriesData> = mutableListOf()
+    private var onItemClickListener: OnItemClickListener? = null
+    interface OnItemClickListener {
+        fun onCategoryClick(category: HardwareCategoriesData)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        onItemClickListener = listener
+    }
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var category: Button = itemView.findViewById(R.id.categoryButton)
@@ -31,8 +41,7 @@ class HardwareCategoriesNamesAdapter(private val categoryNames: List<HardwareCat
         val context: Context = holder.itemView.context
 
         holder.category.setOnClickListener {
-            HardwareCategoriesDataManager.setHardwareCategory(item)
-            Toast.makeText(context, "Clicked: ${item.name}", Toast.LENGTH_SHORT).show()
+            onItemClickListener?.onCategoryClick(item)
         }
 
         holder.bind(item)

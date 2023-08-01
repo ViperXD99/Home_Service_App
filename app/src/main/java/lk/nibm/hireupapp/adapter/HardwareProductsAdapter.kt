@@ -13,8 +13,14 @@ import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.common.HardwareProductsDataManager
 import lk.nibm.hireupapp.model.HardwareProductsData
 
-class HardwareProductsAdapter(private val productData: List<HardwareProductsData>) :
+class HardwareProductsAdapter(private var productData: List<HardwareProductsData>) :
     RecyclerView.Adapter<HardwareProductsAdapter.ViewHolder>() {
+
+
+    fun setData(data: List<HardwareProductsData>) {
+        productData = data
+        notifyDataSetChanged()
+    }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView
         private var image: ImageView
