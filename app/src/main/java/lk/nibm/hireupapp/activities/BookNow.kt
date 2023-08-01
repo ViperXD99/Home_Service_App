@@ -224,6 +224,7 @@ class BookNow : AppCompatActivity() {
             month,
             day
         )
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
         datePickerDialog.show()
     }
 
@@ -242,7 +243,7 @@ class BookNow : AppCompatActivity() {
         spAddress.text = providerData?.address
         spCity.text = providerData?.city
         spDistrict.text = providerData?.district
-        txtRate.text = providerData?.price
+        txtRate.text = "Rs. " + providerData?.price
         Glide.with(this)
             .load(providerData?.photoURL)
             .into(spProPic)
