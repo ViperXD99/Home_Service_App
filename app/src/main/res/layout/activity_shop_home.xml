@@ -29,18 +29,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@id/backArrow"
             android:text="@string/hardware"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             />
-        
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="37dp"
             android:layout_below="@id/backArrow"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
@@ -49,9 +49,9 @@
             android:background="@drawable/search_border"
             android:focusable="false"
             app:iconifiedByDefault="false"
-            app:queryHint="Search..."
+            app:queryHint="Search"
             app:searchHintIcon="@null"
-            app:searchIcon="@drawable/ic_fluent_arrow_left_24_filled" />
+            app:searchIcon="@drawable/ic_fluent_search_24_filled" />
 
     </RelativeLayout>
 
@@ -79,8 +79,8 @@
                     android:id="@+id/categoryTitle"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Category"
+                    android:textSize="14sp"
+                    android:text="@string/categories"
                     android:textStyle="bold" />
 
                 <TextView
@@ -88,11 +88,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_toEndOf="@id/categoryTitle"
                     android:gravity="end"
-                    android:textSize="16sp"
-                    android:text="See All"
-                    android:textColor="@color/light_blue" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="@string/see_all"
+                    android:textColor="@color/teal" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/hardwareCategoryRecyclerView"
@@ -117,8 +119,8 @@
                     android:id="@+id/hardwareTitle"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Hardware Stores"
-                    android:textSize="16dp"
+                    android:text="@string/top_rated_hardware_stores"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -126,11 +128,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="52dp"
+                    android:layout_marginEnd="10dp"
                     android:gravity="end"
                     android:layout_toEndOf="@id/hardwareTitle"
-                    android:text="See All"
-                    android:textColor="@color/light_blue"
-                    android:textSize="16dp" />
+                    android:text="@string/see_all"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal"
+                    android:textSize="14sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/hardwareRecyclerView"
@@ -160,8 +164,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Recommended For You"
-                    android:textSize="16dp"
+                    android:text="@string/recommended_for_you"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
 

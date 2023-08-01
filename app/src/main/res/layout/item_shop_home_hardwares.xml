@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/hardware_card"
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
         app:cardBackgroundColor="@color/white"
@@ -17,14 +17,14 @@
         tools:ignore="TextSizeCheck">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="150dp"
-                android:layout_height="100dp"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
                 android:gravity="top"
                 android:text="Insee Cement (50Kg)"
                 android:layout_gravity="left"
@@ -54,10 +55,10 @@
 
             <TextView
                 android:id="@+id/hardware_address"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:gravity="top"
+                android:layout_marginStart="10dp"
                 android:maxLines="1"
                 android:layout_gravity="left"
                 android:text="Rs.1000.00"
@@ -67,9 +68,11 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="left"
                 android:orientation="horizontal">
 
                 <ImageView
