@@ -14,7 +14,7 @@ import lk.nibm.hireupapp.model.CartItem
 import lk.nibm.hireupapp.model.HardwareProductsData
 
 class ProductDetails : AppCompatActivity() {
-    private var currentQuantity: Int = 0
+    private var currentQuantity: Int = 1
     private lateinit var binding: ActivityProductDetailsBinding
     private lateinit var productData: HardwareProductsData
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,14 +27,16 @@ class ProductDetails : AppCompatActivity() {
         setupQuantity()
         clickListeners()
 
-        binding.buttonBuy.setOnClickListener {
-            val intent = Intent(this , BuyNow::class.java)
-            startActivity(intent)
-        }
+
 
     }
 
     private fun clickListeners() {
+        binding.buttonBuy.setOnClickListener {
+            val intent = Intent(this , BuyNow::class.java)
+            intent.putExtra("PRODUCT_QTY", currentQuantity)
+            startActivity(intent)
+        }
         binding.btnBack.setOnClickListener {
             onBackPressed()
         }
@@ -83,8 +85,7 @@ class ProductDetails : AppCompatActivity() {
     }
 
 
-    private fun setupQuantity() {
-        currentQuantity = 1 // Initialize the current quantity
+    private fun setupQuantity() { // Initialize the current quantity
 
         // Set the initial quantity text
         updateQuantityText()

@@ -225,6 +225,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Sub Total"
+                            android:textStyle="bold"
                             tools:ignore="HardcodedText" />
                         <TextView
                             android:id="@+id/txtProductDescription"
@@ -242,6 +243,25 @@
 
                 </LinearLayout>
 
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Sub Total"-->
+<!--                        tools:ignore="HardcodedText" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Sub Total"-->
+<!--                        android:textAlignment="textEnd"-->
+<!--                        tools:ignore="HardcodedText" />-->
+<!--                </LinearLayout>-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -250,29 +270,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sub Total"
+                        android:text="Quantity"
+                        android:textStyle="bold"
                         tools:ignore="HardcodedText" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sub Total"
-                        android:textAlignment="textEnd"
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Delivery Fee"
-                        tools:ignore="HardcodedText" />
-
-                    <TextView
+                        android:id="@+id/txtQuantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Delivery Fee"
@@ -290,9 +293,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total"
+                        android:textStyle="bold"
                         tools:ignore="HardcodedText" />
 
                     <TextView
+                        android:id="@+id/txtTotalAmount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Total"
