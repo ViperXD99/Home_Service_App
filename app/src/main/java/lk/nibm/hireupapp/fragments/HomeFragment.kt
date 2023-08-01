@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.ServiceCategories
+import lk.nibm.hireupapp.activities.ShopHome
 import lk.nibm.hireupapp.adapter.CategoryAdapter
 import lk.nibm.hireupapp.adapter.TopRatedAdapter
 import lk.nibm.hireupapp.common.UserDataManager
@@ -49,6 +51,7 @@ class HomeFragment : Fragment() {
     private lateinit var seeAllCategories: TextView
     private lateinit var imgWelcome: ImageView
     private lateinit var txtWelcome: TextView
+    private lateinit var shopHome: Button
     private lateinit var dialog: Dialog
     private var isCategoryDataLoaded = false
     private var isTopRatedDataLoaded = false
@@ -170,12 +173,18 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), ServiceCategories::class.java)
             startActivity(intent)
         }
+
+        shopHome.setOnClickListener {
+            val intent = Intent(requireContext(), ShopHome::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initializeComponents() {
         imgProfile = view.findViewById(R.id.imgProfile)
         loggedUserName = view.findViewById(R.id.logged_user_name)
         seeAllCategories = view.findViewById(R.id.seeAllCategories)
+        shopHome = view.findViewById(R.id.shopNowBtn)
         imgWelcome = view.findViewById(R.id.imgWelcome)
         txtWelcome = view.findViewById(R.id.txtWelcome)
     }
