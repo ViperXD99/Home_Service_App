@@ -33,6 +33,7 @@ class InsideHardware : AppCompatActivity() {
     private lateinit var id: String
     private lateinit var HardwareCategoriesNamesAdapter: HardwareCategoriesNamesAdapter
     private lateinit var HardwareProductsAdapter:HardwareProductsAdapter
+    private var layoutManager: RecyclerView.LayoutManager? = null
     private lateinit var databaseReference: DatabaseReference
     private val categoryNames = mutableListOf<HardwareCategoriesData>()
     private val HardwareProducts = mutableListOf<HardwareProductsData>()
