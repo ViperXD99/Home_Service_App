@@ -1,6 +1,7 @@
 package lk.nibm.hireupapp.activities
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -222,8 +223,6 @@ class BuyNow : AppCompatActivity() {
     private fun onDataLoaded() {
         if (isAddressDataLoaded && isHardwareDataLoaded && isProductDataLoaded) {
             dialog.dismiss() // Hide the progress dialog when all data is loaded
-
-
         }
     }
 }
