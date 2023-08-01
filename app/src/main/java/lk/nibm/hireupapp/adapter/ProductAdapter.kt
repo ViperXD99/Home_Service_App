@@ -1,5 +1,6 @@
 package lk.nibm.hireupapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import lk.nibm.hireupapp.R
+import lk.nibm.hireupapp.activities.ProductDetails
+import lk.nibm.hireupapp.common.HardwareProductsDataManager
 import lk.nibm.hireupapp.model.Category
 import lk.nibm.hireupapp.model.Hardware
 import lk.nibm.hireupapp.model.HardwareProductsData
@@ -33,7 +36,7 @@ class ProductAdapter(private val productList: List<HardwareProductsData>) :Recyc
             productImage = productView.findViewById(R.id.product_image)
             productName = productView.findViewById(R.id.product_name)
             productCard = productView.findViewById(R.id.product_card)
-            hardwareName = productView.findViewById(R.id.hardware_address_name)
+            hardwareName = productView.findViewById(R.id.hardware_address)
 //            productPrice = productView.findViewById(R.id.productPrice)
 //            productQuantity = productView.findViewById(R.id.productQuantity)
 //            productDescription = productView.findViewById(R.id.productDescription)
@@ -42,7 +45,7 @@ class ProductAdapter(private val productList: List<HardwareProductsData>) :Recyc
         fun bind(product : HardwareProductsData){
             Glide.with(itemView).load(product.productImage).into(productImage)
             productName.text = product.name
-            hardwareName.text = product.price
+            hardwareName.text = "Rs. "+ product.price
 
         }
 
@@ -59,6 +62,14 @@ class ProductAdapter(private val productList: List<HardwareProductsData>) :Recyc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var product = productList[position]
+        holder.productCard.setOnClickListener {
+            HardwareProductsDataManager.setHardwareProduct(product)
+            val intent = Intent(
+                holder.itemView.context,
+                ProductDetails::class.java
+            )
+            holder.itemView.context.startActivity(intent)
+        }
         holder.bind(product)
 
     }

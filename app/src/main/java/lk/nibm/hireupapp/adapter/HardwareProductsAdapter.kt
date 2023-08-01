@@ -24,17 +24,19 @@ class HardwareProductsAdapter(private var productData: List<HardwareProductsData
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView
         private var image: ImageView
+        private var price: TextView
         val cardView: CardView = itemView.findViewById(R.id.product_card)
 
         init {
             name = itemView.findViewById(R.id.product_name)
             image = itemView.findViewById(R.id.product_image)
-
+            price = itemView.findViewById(R.id.hardware_address)
 
         }
 
         fun bind(item: HardwareProductsData) {
             name.text = item.name
+            price.text = "Rs. " + item.price
             Glide.with(itemView)
                 .load(item.productImage)
                 .into(image)

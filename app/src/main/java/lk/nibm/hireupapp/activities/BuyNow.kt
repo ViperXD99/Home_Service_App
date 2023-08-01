@@ -71,6 +71,9 @@ class BuyNow : AppCompatActivity() {
         binding.btnPlaceOrder.setOnClickListener {
             placeOrder()
         }
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun placeOrder() {
@@ -108,7 +111,7 @@ class BuyNow : AppCompatActivity() {
                 }
 //                .setPositiveButtonStyle(positiveButtonStyle) // Set the custom style to the positive button
                 .show()
-
+            finish()
         }
 
 

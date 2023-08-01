@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.OrdersFragment">
+    android:orientation="vertical"
+    tools:context=".fragments.OrdersFragment"
+    android:background="@color/background_color">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:id="@+id/shopHomeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go to cart"
-        android:layout_centerInParent="true"
-        />
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Orders"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/btnCart"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/top_small_rounded_corners"
+            android:src="@drawable/ic_fluent_cart_24_regular" />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ordersRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/orders_recycler_view_card"/>
+</LinearLayout>
