@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/topRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:background="@color/white"
 
         >
@@ -37,28 +37,13 @@
             android:textStyle="bold"
             />
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:layout_below="@id/backArrow"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/search_border"
-            android:focusable="false"
-            app:iconifiedByDefault="false"
-            app:queryHint="Search"
-            app:searchHintIcon="@null"
-            app:searchIcon="@drawable/ic_fluent_search_24_filled" />
-
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/topRelativeLayout">
+        android:layout_below="@id/topRelativeLayout"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,9 +92,10 @@
             <RelativeLayout
                 android:id="@+id/hardwareRelativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="270dp"
                 android:layout_below="@id/categoryRelativeLayout"
-                android:layout_margin="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:padding="15dp"
                 android:background="@drawable/layout_border"
 
@@ -151,9 +137,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hardwareRelativeLayout"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
                 android:background="@drawable/layout_border"
 
                 >
@@ -172,12 +158,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/itemRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_below="@id/itemTitle"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"
+                    tools:listitem="@layout/item_product_card"/>
 
             </RelativeLayout>
 
