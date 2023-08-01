@@ -32,6 +32,7 @@
                 tools:ignore="SpeakableTextPresentCheck"
                 android:gravity="center"/>
             <TextView
+                android:id="@+id/hardware_category_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Products"
@@ -42,7 +43,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hardwares"
+        android:id="@+id/hardware_products_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_category_product_card"
