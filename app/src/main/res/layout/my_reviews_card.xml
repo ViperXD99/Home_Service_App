@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:text="@string/remove"
             android:textColor="@color/red"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:layout_gravity="end"
             android:paddingEnd="20dp"
             tools:ignore="RtlSymmetry" />

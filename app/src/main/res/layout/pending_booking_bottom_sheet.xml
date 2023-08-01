@@ -33,7 +33,7 @@
                     android:id="@+id/txtSPName"
                     android:text="@string/jenn_wilson"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:layout_toEndOf="@id/image"/>
 
                 <TextView

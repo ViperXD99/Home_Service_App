@@ -10,12 +10,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             tools:ignore="UselessParent">
@@ -24,7 +24,7 @@
                 android:id="@+id/btnBack"
                 android:layout_width="44dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="25dp"
                 android:backgroundTint="@color/white"
                 android:padding="0dp"
                 app:icon="@drawable/ic_fluent_arrow_left_24_filled"
@@ -36,9 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Review"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
@@ -202,8 +202,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image"
-                android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
                 android:text="@string/jenn_wilson"
                 android:textColor="@color/black"
                 android:textSize="15sp"
@@ -226,13 +226,13 @@
                 android:layout_marginTop="131dp"
 
                 android:numStars="5"
+                android:progressTint="@color/yellow"
                 android:rating="4"
-                android:stepSize="1"
 
                 android:scaleX="0.6"
                 android:scaleY="0.6"
 
-                android:progressTint="@color/yellow"/>
+                android:stepSize="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -258,13 +258,11 @@
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/feedbackEditTxt"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="@string/submit"
                 tools:ignore="TouchTargetSizeCheck" />
-
-
 
 
         </RelativeLayout>
