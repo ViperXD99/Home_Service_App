@@ -45,10 +45,15 @@ class ProductDetails : AppCompatActivity() {
     private fun updateCart() {
         val user = FirebaseAuth.getInstance().currentUser
         user?.let { currentUser ->
-            val cartItem = productData.id?.let { productData.price?.let { it1 ->
-                CartItem(it,
-                    it1, currentQuantity)
-            } }
+            val cartItem = productData.productImage?.let {
+                CartItem(
+                    productData.id!!,
+                    productData.name!!,
+                    productData.price!!,
+                    currentQuantity,
+                    it // Include product image URL
+                )
+            }
             val databaseReference = FirebaseDatabase.getInstance().reference
             databaseReference.child("Shop").child("Cart").child(currentUser.uid)
                 .push().setValue(cartItem)
@@ -63,6 +68,8 @@ class ProductDetails : AppCompatActivity() {
             Toast.makeText(this, "Please log in to add to cart.", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 
     private fun loadProductDetails() {
         binding.productDescription.text = productData.description

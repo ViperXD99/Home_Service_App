@@ -15,6 +15,15 @@
         android:theme="@style/Theme.HireUpApp"
         tools:targetApi="31">
         <activity
+            android:name=".activities.BuyNow"
+            android:exported="false" />
+      <activity
+            android:name=".adapter.CartItemAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Cart"
+            android:exported="false" />
+        <activity
             android:name=".activities.HardwareProducts"
             android:exported="false" />
         <activity
@@ -94,7 +103,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.SignUp"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.PersonalInformation"
             android:exported="false" />
