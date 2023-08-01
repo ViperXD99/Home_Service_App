@@ -1,17 +1,11 @@
 package lk.nibm.hireupapp.activities
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -19,18 +13,14 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
-import lk.nibm.hireupapp.common.CategoryDataManager
 import lk.nibm.hireupapp.common.HardwareProductsDataManager
 import lk.nibm.hireupapp.common.UserDataManager
 import lk.nibm.hireupapp.databinding.ActivityBuyNowBinding
-import lk.nibm.hireupapp.databinding.ActivityProductDetailsBinding
 import lk.nibm.hireupapp.model.AddressDataClass
 import lk.nibm.hireupapp.model.Hardware
 import lk.nibm.hireupapp.model.HardwareProductsData
-import lk.nibm.hireupapp.model.ServiceProviders
 import lk.nibm.hireupapp.model.ShopOrderItems
 import lk.nibm.hireupapp.model.ShopOrders
 import lk.nibm.hireupapp.model.User
@@ -66,17 +56,14 @@ class BuyNow : AppCompatActivity() {
         userData = UserDataManager.getUser()!!
         database = FirebaseDatabase.getInstance()
         getUserAddress()
-        checkRadioButtons()
         getHardwareDetails()
         loadProductDetails()
         clickListeners()
     }
 
     private fun clickListeners() {
-
         binding.btnPlaceOrder.setOnClickListener {
             placeOrder()
-
         }
         binding.btnBack.setOnClickListener {
             onBackPressed()
@@ -206,15 +193,6 @@ class BuyNow : AppCompatActivity() {
         })
     }
 
-    private fun checkRadioButtons() {
-        binding.radioBtnCash.setOnClickListener {
-            binding.radioBtnCard.isChecked = false
-        }
-        binding.radioBtnCard.setOnClickListener {
-            binding.radioBtnCash.isChecked = false
-        }
-    }
-
     private fun getUserAddress() {
         userAddressRef = database.reference.child("Users").child(userData.userId!!).child("address")
         userAddressRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -226,7 +204,7 @@ class BuyNow : AppCompatActivity() {
                     }
                 }
                 if (addressList.isNotEmpty()) {
-                    val firstAddress = addressList[1]
+                    val firstAddress = addressList[0]
                     binding.txtAddress.text = firstAddress.address
                     binding.txtAddressCity.text = firstAddress.city
                     binding.txtAddressDistrict.text = firstAddress.province

@@ -12,8 +12,6 @@ import com.bumptech.glide.Glide
 import lk.nibm.hireupapp.R
 import lk.nibm.hireupapp.activities.ProductDetails
 import lk.nibm.hireupapp.common.HardwareProductsDataManager
-import lk.nibm.hireupapp.model.Category
-import lk.nibm.hireupapp.model.Hardware
 import lk.nibm.hireupapp.model.HardwareProductsData
 
 class ProductAdapter(private val productList: List<HardwareProductsData>) :RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
@@ -26,26 +24,18 @@ class ProductAdapter(private val productList: List<HardwareProductsData>) :Recyc
         var productCard : CardView
         var productImage : ImageView
         var productName : TextView
-  //      var hardwareName : TextView
-//        var productPrice : TextView
-//        var productQuantity : TextView
-//        var productDescription : TextView
-//        var productCategory : TextView
+        var hardwareName : TextView
 
         init {
             productImage = productView.findViewById(R.id.product_image)
             productName = productView.findViewById(R.id.product_name)
             productCard = productView.findViewById(R.id.product_card)
-  //          hardwareName = productView.findViewById(R.id.hardware_address_name)
-//            productPrice = productView.findViewById(R.id.productPrice)
-//            productQuantity = productView.findViewById(R.id.productQuantity)
-//            productDescription = productView.findViewById(R.id.productDescription)
-//            productCategory = productView.findViewById(R.id.productCategory)
+            hardwareName = productView.findViewById(R.id.hardware_address)
         }
         fun bind(product : HardwareProductsData){
             Glide.with(itemView).load(product.productImage).into(productImage)
             productName.text = product.name
-            //hardwareName.text = product.price
+            hardwareName.text = "Rs. "+ product.price
 
         }
 
