@@ -22,7 +22,7 @@
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:background="?android:attr/listDivider" />
 
@@ -69,7 +69,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="15dp"
         android:background="?android:attr/listDivider" />
 
@@ -99,7 +99,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
     <LinearLayout
         android:id="@+id/addressTab"
@@ -127,7 +127,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
     <LinearLayout
         android:id="@+id/reviewsTab"
@@ -155,7 +155,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
 
     <LinearLayout
@@ -184,7 +184,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
     <LinearLayout
         android:id="@+id/helpSupportTab"
@@ -212,7 +212,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
     <LinearLayout
         android:id="@+id/logOutTab"
@@ -240,7 +240,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
 
 
