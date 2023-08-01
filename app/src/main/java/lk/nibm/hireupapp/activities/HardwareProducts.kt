@@ -14,13 +14,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import lk.nibm.hireupapp.R
-import lk.nibm.hireupapp.adapter.ChatSpAdapter
 import lk.nibm.hireupapp.adapter.ProductAdapter
-import lk.nibm.hireupapp.model.Category
-import lk.nibm.hireupapp.model.Hardware
 import lk.nibm.hireupapp.model.HardwareProductsData
-import lk.nibm.hireupapp.model.ServiceProviders
-import java.util.Collections.list
+
 
 class HardwareProducts : AppCompatActivity() {
 
