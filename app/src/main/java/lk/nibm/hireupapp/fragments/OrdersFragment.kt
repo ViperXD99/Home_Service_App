@@ -7,9 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import lk.nibm.hireupapp.R
-import lk.nibm.hireupapp.activities.ShopHome
+import lk.nibm.hireupapp.activities.Cart
 
 class OrdersFragment : Fragment() {
 
@@ -30,7 +29,8 @@ class OrdersFragment : Fragment() {
 
     private fun navigateToShopHome() {
         // Add code to navigate to the ShopHome activity here
-        val intent = Intent(activity, ShopHome::class.java)
+
+        val intent = Intent(activity, Cart::class.java)
         startActivity(intent)
     }
 }
