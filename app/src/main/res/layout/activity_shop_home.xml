@@ -36,7 +36,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             />
-
+        
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
