@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -21,11 +22,19 @@ class HardwareCategories : AppCompatActivity() {
     private var layoutManager : RecyclerView.LayoutManager? = null
     private lateinit var databaseReference: DatabaseReference
     private val itemList = mutableListOf<HardwareCategoriesData>()
+    private lateinit var backButton : MaterialButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hardware_categories)
         initializeComponents()
         loadServiceCategories()
+        clickListeners()
+    }
+
+    private fun clickListeners() {
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun loadServiceCategories() {
@@ -51,5 +60,6 @@ class HardwareCategories : AppCompatActivity() {
 
     private fun initializeComponents() {
         hardwares = findViewById(R.id.hardwares)
+        backButton = findViewById(R.id.backButton)
     }
 }

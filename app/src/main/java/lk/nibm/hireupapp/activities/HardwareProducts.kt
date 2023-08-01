@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -26,6 +27,7 @@ class HardwareProducts : AppCompatActivity() {
     private var productList = mutableListOf<HardwareProductsData>()
     private lateinit var databaseReference: DatabaseReference
     private lateinit var id : String
+    private lateinit var btnBack : MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,13 @@ class HardwareProducts : AppCompatActivity() {
         initializeComponents()
         setData()
         loadProducts()
+        clickListeners()
+    }
+
+    private fun clickListeners() {
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun loadProducts(){
@@ -70,6 +79,7 @@ class HardwareProducts : AppCompatActivity() {
     private fun initializeComponents() {
         productsRecyclerView = findViewById(R.id.hardware_products_recycler_view)
         hardwareCategoryName = findViewById(R.id.hardware_category_name)
+        btnBack = findViewById(R.id.btnBack)
     }
 
 }
