@@ -17,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:orientation="horizontal">
@@ -25,14 +25,17 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_fluent_arrow_left_24_filled" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgShop"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:scaleType="fitXY"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
                 app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                 android:src="@color/primary_color"
                 tools:ignore="ContentDescription" />
@@ -46,8 +49,9 @@
                     android:id="@+id/hardwares_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Colorful ardware"
+                    android:layout_marginStart="18dp"
+                    android:text="Colorful Hardware"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -60,95 +64,75 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="19dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="2dp"
-                        android:src="@drawable/ic_fluent_location_24_filled_teal" />
+                        android:layout_height="20dp"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/ic_fluent_location_24_regular" />
 
                     <TextView
                         android:id="@+id/hardwares_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
                         android:text="19/B, Kollupitiya, Colombo 03"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="287dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="2dp"
                         android:src="@drawable/ic_fluent_star_half_24_filled__1_" />
 
                     <TextView
                         android:id="@+id/hardwares_rate"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="3dp"
                         android:text="4.8"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
-                        android:text="|"
-                        android:textSize="16sp" />
+                        android:layout_marginTop="2dp"
+                        android:text=" |"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/hardwares_reviews"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="3dp"
                         android:text="54 Reviews"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginEnd="20dp"
                         android:src="@drawable/ic_fluent_call_24_regular" />
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/ic_fluent_chat_24_teal" />
 
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:hint="Search"
-            android:layout_gravity="center"
-            app:boxStrokeColor="@color/dark_gray"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopStart="10dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:drawableStart="@drawable/ic_fluent_search_24_filled"
-                android:drawableTint="@color/light_blue"
-                android:drawablePadding="8dp"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:singleLine="true"
-                android:focusable="false"
-                tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 <HorizontalScrollView
     android:layout_width="match_parent"
@@ -188,6 +172,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:layout_marginStart="-30dp"
+            android:layout_marginEnd="-30dp"
             tools:listitem="@layout/item_shop_home_hardwares_categories" />
 
     </LinearLayout>
