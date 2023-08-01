@@ -10,7 +10,7 @@
         android:id="@+id/shopHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Shop Home"
+        android:text="Go to cart"
         android:layout_centerInParent="true"
         />
 </FrameLayout>

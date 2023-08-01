@@ -10,7 +10,7 @@
     >
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
         android:backgroundTint="@color/white">
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp">
 
             <com.google.android.material.button.MaterialButton
@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:gravity="center"
+                android:layout_marginStart="-10dp"
                 app:icon="@drawable/ic_fluent_arrow_left_24_filled"
                 app:iconSize="0dp"
                 app:iconTint="@color/primary_color"
@@ -34,7 +35,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hardware's"
+                android:text="@string/top_rated_hardware_stores"
                 android:textColor="@color/black"
                 tools:ignore="HardcodedText"
                 android:textSize="16sp"
@@ -46,8 +47,9 @@
         android:id="@+id/hardwares"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_shop_home_hardwares"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        tools:listitem="@layout/item_shop_home_hardwares" />
 
 </LinearLayout>

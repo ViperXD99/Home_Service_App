@@ -17,6 +17,12 @@
         <activity
             android:name=".activities.BuyNow"
             android:exported="false" />
+      <activity
+            android:name=".adapter.CartItemAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Cart"
+            android:exported="false" />
         <activity
             android:name=".activities.HardwareProducts"
             android:exported="false" />
